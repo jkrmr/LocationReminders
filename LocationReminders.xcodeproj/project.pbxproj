@@ -24,6 +24,7 @@
 		1BAA28E51EB7B51300FBA04F /* Parse.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAA28E11EB7B51300FBA04F /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1BAA28EA1EB7B55B00FBA04F /* Bolts.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1BAA28E81EB7B55B00FBA04F /* Bolts.framework.dSYM */; };
 		1BAA28EB1EB7B55B00FBA04F /* Parse.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1BAA28E91EB7B55B00FBA04F /* Parse.framework.dSYM */; };
+		1BD9AB021EB7D80F009F482B /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD9AB011EB7D80F009F482B /* Settings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		1BAA28E11EB7B51300FBA04F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
 		1BAA28E81EB7B55B00FBA04F /* Bolts.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Bolts.framework.dSYM; path = Carthage/Build/iOS/Bolts.framework.dSYM; sourceTree = "<group>"; };
 		1BAA28E91EB7B55B00FBA04F /* Parse.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Parse.framework.dSYM; path = Carthage/Build/iOS/Parse.framework.dSYM; sourceTree = "<group>"; };
+		1BD9AB001EB7D80F009F482B /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		1BD9AB011EB7D80F009F482B /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 			children = (
 				1B42585D1EB7BCA5007B84D0 /* ParseConfiguration.h */,
 				1B42585B1EB7BC86007B84D0 /* ParseConfiguration.m */,
+				1BD9AB001EB7D80F009F482B /* Settings.h */,
+				1BD9AB011EB7D80F009F482B /* Settings.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -314,6 +319,7 @@
 			files = (
 				1BAA28B91EB7980400FBA04F /* LocationReminders.xcdatamodeld in Sources */,
 				1B42585C1EB7BC86007B84D0 /* ParseConfiguration.m in Sources */,
+				1BD9AB021EB7D80F009F482B /* Settings.m in Sources */,
 				1BAA28B01EB7980400FBA04F /* AppDelegate.m in Sources */,
 				1BAA28AD1EB7980400FBA04F /* main.m in Sources */,
 				1BAA28D81EB79C3000FBA04F /* HomeViewController.m in Sources */,

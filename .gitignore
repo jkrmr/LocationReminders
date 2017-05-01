@@ -184,4 +184,4 @@ tags
 
 # End of https://www.gitignore.io/api/vim
 
-LocationReminders/ParseConfiguration.m
+/LocationReminders/Settings.m
