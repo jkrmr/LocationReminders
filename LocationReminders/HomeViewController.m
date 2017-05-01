@@ -31,4 +31,7 @@
   [self.mapView setRegion:region];
 }
 
+- (IBAction)locationSelectonDidChange:(UISegmentedControl *)sender {
+}
+
 @end
