@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		1BAA28AD1EB7980400FBA04F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28AC1EB7980400FBA04F /* main.m */; };
 		1BAA28B01EB7980400FBA04F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28AF1EB7980400FBA04F /* AppDelegate.m */; };
-		1BAA28B31EB7980400FBA04F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28B21EB7980400FBA04F /* ViewController.m */; };
 		1BAA28B61EB7980400FBA04F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BAA28B41EB7980400FBA04F /* Main.storyboard */; };
 		1BAA28B91EB7980400FBA04F /* LocationReminders.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28B71EB7980400FBA04F /* LocationReminders.xcdatamodeld */; };
 		1BAA28BB1EB7980400FBA04F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BAA28BA1EB7980400FBA04F /* Assets.xcassets */; };
 		1BAA28BE1EB7980400FBA04F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BAA28BC1EB7980400FBA04F /* LaunchScreen.storyboard */; };
 		1BAA28C91EB7980400FBA04F /* LocationRemindersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28C81EB7980400FBA04F /* LocationRemindersTests.m */; };
+		1BAA28D81EB79C3000FBA04F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28D71EB79C3000FBA04F /* HomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,8 +32,6 @@
 		1BAA28AC1EB7980400FBA04F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1BAA28AE1EB7980400FBA04F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1BAA28AF1EB7980400FBA04F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1BAA28B11EB7980400FBA04F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1BAA28B21EB7980400FBA04F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1BAA28B51EB7980400FBA04F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1BAA28B81EB7980400FBA04F /* LocationReminders.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocationReminders.xcdatamodel; sourceTree = "<group>"; };
 		1BAA28BA1EB7980400FBA04F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,6 +40,8 @@
 		1BAA28C41EB7980400FBA04F /* LocationRemindersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationRemindersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BAA28C81EB7980400FBA04F /* LocationRemindersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationRemindersTests.m; sourceTree = "<group>"; };
 		1BAA28CA1EB7980400FBA04F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BAA28D61EB79C3000FBA04F /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		1BAA28D71EB79C3000FBA04F /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,10 +83,10 @@
 		1BAA28AA1EB7980400FBA04F /* LocationReminders */ = {
 			isa = PBXGroup;
 			children = (
+				1BAA28D61EB79C3000FBA04F /* HomeViewController.h */,
+				1BAA28D71EB79C3000FBA04F /* HomeViewController.m */,
 				1BAA28AE1EB7980400FBA04F /* AppDelegate.h */,
 				1BAA28AF1EB7980400FBA04F /* AppDelegate.m */,
-				1BAA28B11EB7980400FBA04F /* ViewController.h */,
-				1BAA28B21EB7980400FBA04F /* ViewController.m */,
 				1BAA28B41EB7980400FBA04F /* Main.storyboard */,
 				1BAA28BA1EB7980400FBA04F /* Assets.xcassets */,
 				1BAA28BC1EB7980400FBA04F /* LaunchScreen.storyboard */,
@@ -219,9 +219,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BAA28B91EB7980400FBA04F /* LocationReminders.xcdatamodeld in Sources */,
-				1BAA28B31EB7980400FBA04F /* ViewController.m in Sources */,
 				1BAA28B01EB7980400FBA04F /* AppDelegate.m in Sources */,
 				1BAA28AD1EB7980400FBA04F /* main.m in Sources */,
+				1BAA28D81EB79C3000FBA04F /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +422,7 @@
 				1BAA28CF1EB7980500FBA04F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1BAA28D01EB7980500FBA04F /* Build configuration list for PBXNativeTarget "LocationRemindersTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +431,7 @@
 				1BAA28D21EB7980500FBA04F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
