@@ -12,7 +12,7 @@
 #import <Parse/Parse.h>
 
 @interface ParseConfiguration : NSObject
-+ (void) configure;
++ (void)configure;
 @end
 
 #endif /* ParseConfiguration_h */

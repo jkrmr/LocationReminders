@@ -9,9 +9,9 @@
 #import "HomeViewController.h"
 
 @interface HomeViewController ()
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *locationSelector;
-@property (strong, nonatomic) CLLocationManager *locationManager;
+@property(weak, nonatomic) IBOutlet MKMapView *mapView;
+@property(weak, nonatomic) IBOutlet UISegmentedControl *locationSelector;
+@property(strong, nonatomic) CLLocationManager *locationManager;
 @end
 
 @implementation HomeViewController
@@ -19,24 +19,26 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.mapView.showsUserLocation = YES;
-  
+
   [self configureLocationManager];
   [self displaySelectedMap];
 }
 
-- (void) performTestQuery {
+- (void)performTestQuery {
   PFObject *testObj = [[PFObject alloc] initWithClassName:@"TestObject"];
   testObj[@"name"] = @"Jake";
-  [testObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-    if (succeeded) {
-      NSLog(@"good!");
-    } else {
-      NSLog(@"no good!");
-    }
-  }];
+  [testObj
+      saveInBackgroundWithBlock:^(BOOL succeeded, NSError *_Nullable error) {
+        if (succeeded) {
+          NSLog(@"good!");
+        } else {
+          NSLog(@"no good!");
+        }
+      }];
 
   PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
-  [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+  [query findObjectsInBackgroundWithBlock:^(NSArray *_Nullable objects,
+                                            NSError *_Nullable error) {
     if (error) {
       NSLog(@"Error: %@", error.localizedDescription);
     } else {
@@ -53,7 +55,7 @@
 
 #pragma mark - CLLocationManager setup
 
-- (void) configureLocationManager {
+- (void)configureLocationManager {
   self.locationManager = [[CLLocationManager alloc] init];
   self.locationManager.delegate = self;
   [self.locationManager requestWhenInUseAuthorization];
@@ -62,7 +64,7 @@
 
 #pragma mark - Map display logic
 
-- (void) displaySelectedMap {
+- (void)displaySelectedMap {
   NSString *selectedMap;
   NSInteger selectedIndex;
   CLLocationCoordinate2D location;
@@ -80,17 +82,17 @@
     NSLog(@"Unrecognized selection.");
     location = CLLocationCoordinate2DMake(40.7829, -73.9654);
   }
-  
-  [self setMapLocation: location];
+
+  [self setMapLocation:location];
 }
 
-- (void) setMapLocation:(CLLocationCoordinate2D)location {
+- (void)setMapLocation:(CLLocationCoordinate2D)location {
   MKCoordinateRegion region;
   MKCoordinateSpan span;
 
   span = MKCoordinateSpanMake(0.05, 0.05);
   region = MKCoordinateRegionMake(location, span);
-  
+
   [self.mapView setRegion:region animated:YES];
 }
 
@@ -101,8 +103,8 @@
   NSLog(@"Successfully updated the user's location.");
 }
 
-- (void) locationManager:(CLLocationManager *)manager
-        didFailWithError:(NSError *)error {
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error {
   NSLog(@"Failed to update the user's location.");
 }
 
