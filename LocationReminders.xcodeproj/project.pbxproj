@@ -15,6 +15,8 @@
 		1BAA28BE1EB7980400FBA04F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BAA28BC1EB7980400FBA04F /* LaunchScreen.storyboard */; };
 		1BAA28C91EB7980400FBA04F /* LocationRemindersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28C81EB7980400FBA04F /* LocationRemindersTests.m */; };
 		1BAA28D81EB79C3000FBA04F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28D71EB79C3000FBA04F /* HomeViewController.m */; };
+		1BAA28DB1EB7AD4300FBA04F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAA28DA1EB7AD4300FBA04F /* MapKit.framework */; };
+		1BAA28DD1EB7AD4900FBA04F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAA28DC1EB7AD4900FBA04F /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		1BAA28CA1EB7980400FBA04F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BAA28D61EB79C3000FBA04F /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		1BAA28D71EB79C3000FBA04F /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		1BAA28DA1EB7AD4300FBA04F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1BAA28DC1EB7AD4900FBA04F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BAA28DD1EB7AD4900FBA04F /* CoreLocation.framework in Frameworks */,
+				1BAA28DB1EB7AD4300FBA04F /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +74,7 @@
 				1BAA28AA1EB7980400FBA04F /* LocationReminders */,
 				1BAA28C71EB7980400FBA04F /* LocationRemindersTests */,
 				1BAA28A91EB7980400FBA04F /* Products */,
+				1BAA28D91EB7AD4300FBA04F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +119,15 @@
 				1BAA28CA1EB7980400FBA04F /* Info.plist */,
 			);
 			path = LocationRemindersTests;
+			sourceTree = "<group>";
+		};
+		1BAA28D91EB7AD4300FBA04F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1BAA28DC1EB7AD4900FBA04F /* CoreLocation.framework */,
+				1BAA28DA1EB7AD4300FBA04F /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
