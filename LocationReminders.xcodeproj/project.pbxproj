@@ -7,14 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B42585C1EB7BC86007B84D0 /* ParseConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B42585B1EB7BC86007B84D0 /* ParseConfiguration.m */; };
 		1BAA28AD1EB7980400FBA04F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28AC1EB7980400FBA04F /* main.m */; };
 		1BAA28B01EB7980400FBA04F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28AF1EB7980400FBA04F /* AppDelegate.m */; };
-		1BAA28B31EB7980400FBA04F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28B21EB7980400FBA04F /* ViewController.m */; };
 		1BAA28B61EB7980400FBA04F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BAA28B41EB7980400FBA04F /* Main.storyboard */; };
 		1BAA28B91EB7980400FBA04F /* LocationReminders.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28B71EB7980400FBA04F /* LocationReminders.xcdatamodeld */; };
 		1BAA28BB1EB7980400FBA04F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BAA28BA1EB7980400FBA04F /* Assets.xcassets */; };
 		1BAA28BE1EB7980400FBA04F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BAA28BC1EB7980400FBA04F /* LaunchScreen.storyboard */; };
 		1BAA28C91EB7980400FBA04F /* LocationRemindersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28C81EB7980400FBA04F /* LocationRemindersTests.m */; };
+		1BAA28D81EB79C3000FBA04F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28D71EB79C3000FBA04F /* HomeViewController.m */; };
+		1BAA28DB1EB7AD4300FBA04F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAA28DA1EB7AD4300FBA04F /* MapKit.framework */; };
+		1BAA28DD1EB7AD4900FBA04F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAA28DC1EB7AD4900FBA04F /* CoreLocation.framework */; };
+		1BAA28E21EB7B51300FBA04F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAA28E01EB7B51300FBA04F /* Bolts.framework */; };
+		1BAA28E31EB7B51300FBA04F /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAA28E01EB7B51300FBA04F /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1BAA28E41EB7B51300FBA04F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAA28E11EB7B51300FBA04F /* Parse.framework */; };
+		1BAA28E51EB7B51300FBA04F /* Parse.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAA28E11EB7B51300FBA04F /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1BAA28EA1EB7B55B00FBA04F /* Bolts.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1BAA28E81EB7B55B00FBA04F /* Bolts.framework.dSYM */; };
+		1BAA28EB1EB7B55B00FBA04F /* Parse.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1BAA28E91EB7B55B00FBA04F /* Parse.framework.dSYM */; };
+		1BD9AB021EB7D80F009F482B /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD9AB011EB7D80F009F482B /* Settings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,13 +37,39 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1BAA28E61EB7B51300FBA04F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1BAA28E51EB7B51300FBA04F /* Parse.framework in Embed Frameworks */,
+				1BAA28E31EB7B51300FBA04F /* Bolts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BAA28E71EB7B54100FBA04F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				1BAA28EA1EB7B55B00FBA04F /* Bolts.framework.dSYM in CopyFiles */,
+				1BAA28EB1EB7B55B00FBA04F /* Parse.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1B42585B1EB7BC86007B84D0 /* ParseConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseConfiguration.m; sourceTree = "<group>"; };
+		1B42585D1EB7BCA5007B84D0 /* ParseConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseConfiguration.h; sourceTree = "<group>"; };
 		1BAA28A81EB7980400FBA04F /* LocationReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BAA28AC1EB7980400FBA04F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1BAA28AE1EB7980400FBA04F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1BAA28AF1EB7980400FBA04F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1BAA28B11EB7980400FBA04F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1BAA28B21EB7980400FBA04F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1BAA28B51EB7980400FBA04F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1BAA28B81EB7980400FBA04F /* LocationReminders.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocationReminders.xcdatamodel; sourceTree = "<group>"; };
 		1BAA28BA1EB7980400FBA04F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,6 +78,17 @@
 		1BAA28C41EB7980400FBA04F /* LocationRemindersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationRemindersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BAA28C81EB7980400FBA04F /* LocationRemindersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationRemindersTests.m; sourceTree = "<group>"; };
 		1BAA28CA1EB7980400FBA04F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BAA28D61EB79C3000FBA04F /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		1BAA28D71EB79C3000FBA04F /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		1BAA28DA1EB7AD4300FBA04F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1BAA28DC1EB7AD4900FBA04F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1BAA28DE1EB7B4C900FBA04F /* Parse-SDK-iOS-OSX */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Parse-SDK-iOS-OSX"; path = "Carthage/Checkouts/Parse-SDK-iOS-OSX"; sourceTree = "<group>"; };
+		1BAA28E01EB7B51300FBA04F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
+		1BAA28E11EB7B51300FBA04F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
+		1BAA28E81EB7B55B00FBA04F /* Bolts.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Bolts.framework.dSYM; path = Carthage/Build/iOS/Bolts.framework.dSYM; sourceTree = "<group>"; };
+		1BAA28E91EB7B55B00FBA04F /* Parse.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Parse.framework.dSYM; path = Carthage/Build/iOS/Parse.framework.dSYM; sourceTree = "<group>"; };
+		1BD9AB001EB7D80F009F482B /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		1BD9AB011EB7D80F009F482B /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +96,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BAA28E21EB7B51300FBA04F /* Bolts.framework in Frameworks */,
+				1BAA28DD1EB7AD4900FBA04F /* CoreLocation.framework in Frameworks */,
+				1BAA28E41EB7B51300FBA04F /* Parse.framework in Frameworks */,
+				1BAA28DB1EB7AD4300FBA04F /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,12 +113,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B42585A1EB7BC5C007B84D0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1B42585D1EB7BCA5007B84D0 /* ParseConfiguration.h */,
+				1B42585B1EB7BC86007B84D0 /* ParseConfiguration.m */,
+				1BD9AB001EB7D80F009F482B /* Settings.h */,
+				1BD9AB011EB7D80F009F482B /* Settings.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		1BAA289F1EB7980400FBA04F = {
 			isa = PBXGroup;
 			children = (
 				1BAA28AA1EB7980400FBA04F /* LocationReminders */,
 				1BAA28C71EB7980400FBA04F /* LocationRemindersTests */,
 				1BAA28A91EB7980400FBA04F /* Products */,
+				1BAA28D91EB7AD4300FBA04F /* Frameworks */,
+				1BAA28E81EB7B55B00FBA04F /* Bolts.framework.dSYM */,
+				1BAA28E91EB7B55B00FBA04F /* Parse.framework.dSYM */,
+				1BAA28E01EB7B51300FBA04F /* Bolts.framework */,
+				1BAA28E11EB7B51300FBA04F /* Parse.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,10 +150,11 @@
 		1BAA28AA1EB7980400FBA04F /* LocationReminders */ = {
 			isa = PBXGroup;
 			children = (
+				1B42585A1EB7BC5C007B84D0 /* Models */,
+				1BAA28D61EB79C3000FBA04F /* HomeViewController.h */,
+				1BAA28D71EB79C3000FBA04F /* HomeViewController.m */,
 				1BAA28AE1EB7980400FBA04F /* AppDelegate.h */,
 				1BAA28AF1EB7980400FBA04F /* AppDelegate.m */,
-				1BAA28B11EB7980400FBA04F /* ViewController.h */,
-				1BAA28B21EB7980400FBA04F /* ViewController.m */,
 				1BAA28B41EB7980400FBA04F /* Main.storyboard */,
 				1BAA28BA1EB7980400FBA04F /* Assets.xcassets */,
 				1BAA28BC1EB7980400FBA04F /* LaunchScreen.storyboard */,
@@ -114,6 +182,16 @@
 			path = LocationRemindersTests;
 			sourceTree = "<group>";
 		};
+		1BAA28D91EB7AD4300FBA04F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1BAA28DE1EB7B4C900FBA04F /* Parse-SDK-iOS-OSX */,
+				1BAA28DC1EB7AD4900FBA04F /* CoreLocation.framework */,
+				1BAA28DA1EB7AD4300FBA04F /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -124,6 +202,9 @@
 				1BAA28A41EB7980400FBA04F /* Sources */,
 				1BAA28A51EB7980400FBA04F /* Frameworks */,
 				1BAA28A61EB7980400FBA04F /* Resources */,
+				1BAA28E61EB7B51300FBA04F /* Embed Frameworks */,
+				1BAA28E71EB7B54100FBA04F /* CopyFiles */,
+				1BAA28EC1EB7B5A300FBA04F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -213,15 +294,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1BAA28EC1EB7B5A300FBA04F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Bolts.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Parse.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1BAA28A41EB7980400FBA04F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				1BAA28B91EB7980400FBA04F /* LocationReminders.xcdatamodeld in Sources */,
-				1BAA28B31EB7980400FBA04F /* ViewController.m in Sources */,
+				1B42585C1EB7BC86007B84D0 /* ParseConfiguration.m in Sources */,
+				1BD9AB021EB7D80F009F482B /* Settings.m in Sources */,
 				1BAA28B01EB7980400FBA04F /* AppDelegate.m in Sources */,
 				1BAA28AD1EB7980400FBA04F /* main.m in Sources */,
+				1BAA28D81EB79C3000FBA04F /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +459,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = M94KDK654M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LocationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jkrmr.LocationReminders;
@@ -370,6 +475,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = M94KDK654M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LocationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jkrmr.LocationReminders;
@@ -422,6 +531,7 @@
 				1BAA28CF1EB7980500FBA04F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1BAA28D01EB7980500FBA04F /* Build configuration list for PBXNativeTarget "LocationRemindersTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +540,7 @@
 				1BAA28D21EB7980500FBA04F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
