@@ -25,7 +25,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SoJ-Ay-JoH">
                                 <rect key="frame" x="56.5" y="100" width="262.5" height="467"/>
                             </mapView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="9Eg-FV-4N4">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9Eg-FV-4N4">
                                 <rect key="frame" x="56" y="617" width="263" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GVJ-gT-J25"/>

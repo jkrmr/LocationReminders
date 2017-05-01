@@ -19,8 +19,11 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.mapView.showsUserLocation = YES;
-
   [self configureLocationManager];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
   [self displaySelectedMap];
 }
 
