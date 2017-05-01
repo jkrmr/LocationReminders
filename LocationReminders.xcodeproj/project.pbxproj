@@ -122,14 +122,14 @@
 		1BAA289F1EB7980400FBA04F = {
 			isa = PBXGroup;
 			children = (
-				1BAA28E81EB7B55B00FBA04F /* Bolts.framework.dSYM */,
-				1BAA28E91EB7B55B00FBA04F /* Parse.framework.dSYM */,
-				1BAA28E01EB7B51300FBA04F /* Bolts.framework */,
-				1BAA28E11EB7B51300FBA04F /* Parse.framework */,
 				1BAA28AA1EB7980400FBA04F /* LocationReminders */,
 				1BAA28C71EB7980400FBA04F /* LocationRemindersTests */,
 				1BAA28A91EB7980400FBA04F /* Products */,
 				1BAA28D91EB7AD4300FBA04F /* Frameworks */,
+				1BAA28E81EB7B55B00FBA04F /* Bolts.framework.dSYM */,
+				1BAA28E91EB7B55B00FBA04F /* Parse.framework.dSYM */,
+				1BAA28E01EB7B51300FBA04F /* Bolts.framework */,
+				1BAA28E11EB7B51300FBA04F /* Parse.framework */,
 			);
 			sourceTree = "<group>";
 		};

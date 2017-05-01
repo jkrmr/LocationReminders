@@ -6,10 +6,10 @@
 //  Copyright © 2017 Jake Romer. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
-#import <CoreLocation/CoreLocation.h>
-#import <Parse/Parse.h>
+@import MapKit;
+@import UIKit;
+@import CoreLocation;
+@import Parse;
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController <CLLocationManagerDelegate>
 @end
