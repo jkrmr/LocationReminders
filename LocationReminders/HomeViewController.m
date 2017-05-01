@@ -32,6 +32,8 @@
 }
 
 - (IBAction)locationSelectonDidChange:(UISegmentedControl *)sender {
+  NSLog(sender);
+  NSLog(@"hello");
 }
 
 @end
