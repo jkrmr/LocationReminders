@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B42585C1EB7BC86007B84D0 /* ParseConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B42585B1EB7BC86007B84D0 /* ParseConfiguration.m */; };
 		1BAA28AD1EB7980400FBA04F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28AC1EB7980400FBA04F /* main.m */; };
 		1BAA28B01EB7980400FBA04F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28AF1EB7980400FBA04F /* AppDelegate.m */; };
 		1BAA28B61EB7980400FBA04F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BAA28B41EB7980400FBA04F /* Main.storyboard */; };
@@ -62,6 +63,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1B42585B1EB7BC86007B84D0 /* ParseConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseConfiguration.m; sourceTree = "<group>"; };
+		1B42585D1EB7BCA5007B84D0 /* ParseConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseConfiguration.h; sourceTree = "<group>"; };
 		1BAA28A81EB7980400FBA04F /* LocationReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BAA28AC1EB7980400FBA04F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1BAA28AE1EB7980400FBA04F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -107,6 +110,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B42585A1EB7BC5C007B84D0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1B42585D1EB7BCA5007B84D0 /* ParseConfiguration.h */,
+				1B42585B1EB7BC86007B84D0 /* ParseConfiguration.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		1BAA289F1EB7980400FBA04F = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +145,7 @@
 		1BAA28AA1EB7980400FBA04F /* LocationReminders */ = {
 			isa = PBXGroup;
 			children = (
+				1B42585A1EB7BC5C007B84D0 /* Models */,
 				1BAA28D61EB79C3000FBA04F /* HomeViewController.h */,
 				1BAA28D71EB79C3000FBA04F /* HomeViewController.m */,
 				1BAA28AE1EB7980400FBA04F /* AppDelegate.h */,
@@ -300,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BAA28B91EB7980400FBA04F /* LocationReminders.xcdatamodeld in Sources */,
+				1B42585C1EB7BC86007B84D0 /* ParseConfiguration.m in Sources */,
 				1BAA28B01EB7980400FBA04F /* AppDelegate.m in Sources */,
 				1BAA28AD1EB7980400FBA04F /* main.m in Sources */,
 				1BAA28D81EB79C3000FBA04F /* HomeViewController.m in Sources */,

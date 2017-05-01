@@ -29,11 +29,28 @@
   
   region = MKCoordinateRegionMake(tenDowning, span);
   [self.mapView setRegion:region];
+
+  // PFObject *testObj = [[PFObject alloc] initWithClassName:@"TestObject"];
+  // testObj[@"name"] = @"Jake";
+  // [testObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+  //   if (succeeded) {
+  //     NSLog(@"good!");
+  //   } else {
+  //     NSLog(@"no good!");
+  //   }
+  // }];
+
+  // PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
+  // [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+  //   if (error) {
+  //     NSLog(@"Error: %@", error.localizedDescription);
+  //   } else {
+  //     NSLog(@"Query results: %@", objects);
+  //   }
+  // }];
 }
 
 - (IBAction)locationSelectonDidChange:(UISegmentedControl *)sender {
-  NSLog(sender);
-  NSLog(@"hello");
 }
 
 @end
