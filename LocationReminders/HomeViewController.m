@@ -19,34 +19,69 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.mapView.showsUserLocation = YES;
+  
+  [self configureLocationManager];
+  [self displaySelectedMap];
+}
 
+- (void) performTestQuery {
+  PFObject *testObj = [[PFObject alloc] initWithClassName:@"TestObject"];
+  testObj[@"name"] = @"Jake";
+  [testObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    if (succeeded) {
+      NSLog(@"good!");
+    } else {
+      NSLog(@"no good!");
+    }
+  }];
+
+  PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
+  [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+    if (error) {
+      NSLog(@"Error: %@", error.localizedDescription);
+    } else {
+      NSLog(@"Query results: %@", objects);
+    }
+  }];
+}
+
+#pragma mark - IBActions
+
+- (IBAction)locationSelectonDidChange:(UISegmentedControl *)sender {
+  [self displaySelectedMap];
+}
+
+#pragma mark - CLLocationManager setup
+
+- (void) configureLocationManager {
   self.locationManager = [[CLLocationManager alloc] init];
   self.locationManager.delegate = self;
   [self.locationManager requestWhenInUseAuthorization];
   [self.locationManager requestLocation];
+}
 
-  CLLocationCoordinate2D seattle;
-  seattle = CLLocationCoordinate2DMake(47.6062, -122.3321);
-  [self setMapLocation: seattle];
+#pragma mark - Map display logic
+
+- (void) displaySelectedMap {
+  NSString *selectedMap;
+  NSInteger selectedIndex;
+  CLLocationCoordinate2D location;
+
+  selectedIndex = [self.locationSelector selectedSegmentIndex];
+  selectedMap = [self.locationSelector titleForSegmentAtIndex:selectedIndex];
+
+  if ([selectedMap isEqualToString:@"🏡"]) {
+    location = CLLocationCoordinate2DMake(40.7829, -73.9654);
+  } else if ([selectedMap isEqualToString:@"🥂"]) {
+    location = CLLocationCoordinate2DMake(51.5033640, -0.1276250);
+  } else if ([selectedMap isEqualToString:@"🚢"]) {
+    location = CLLocationCoordinate2DMake(45.4997210, -73.5511130);
+  } else {
+    NSLog(@"Unrecognized selection.");
+    location = CLLocationCoordinate2DMake(40.7829, -73.9654);
+  }
   
-  // PFObject *testObj = [[PFObject alloc] initWithClassName:@"TestObject"];
-  // testObj[@"name"] = @"Jake";
-  // [testObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-  //   if (succeeded) {
-  //     NSLog(@"good!");
-  //   } else {
-  //     NSLog(@"no good!");
-  //   }
-  // }];
-
-  // PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
-  // [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-  //   if (error) {
-  //     NSLog(@"Error: %@", error.localizedDescription);
-  //   } else {
-  //     NSLog(@"Query results: %@", objects);
-  //   }
-  // }];
+  [self setMapLocation: location];
 }
 
 - (void) setMapLocation:(CLLocationCoordinate2D)location {
@@ -59,25 +94,7 @@
   [self.mapView setRegion:region animated:YES];
 }
 
-- (IBAction)locationSelectonDidChange:(UISegmentedControl *)sender {
-  NSString *selectedMap;
-  CLLocationCoordinate2D location;
-  
-  selectedMap = [sender titleForSegmentAtIndex: sender.selectedSegmentIndex];
-
-  if ([selectedMap isEqualToString:@"🏡"]) {
-    location = CLLocationCoordinate2DMake(40.7671980, -73.8278410);
-    [self setMapLocation: location];
-  } else if ([selectedMap isEqualToString:@"🥂"]) {
-    location = CLLocationCoordinate2DMake(51.5033640, -0.1276250);
-    [self setMapLocation: location];
-  } else if ([selectedMap isEqualToString:@"🚢"]) {
-    location = CLLocationCoordinate2DMake(45.4997210, -73.5511130);
-    [self setMapLocation: location];
-  } else {
-    NSLog(@"Unrecognized selection.");
-  }
-}
+#pragma mark - CLLocationManager delegate methods
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray<CLLocation *> *)locations {
