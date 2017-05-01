@@ -25,9 +25,9 @@
   [self.locationManager requestWhenInUseAuthorization];
   [self.locationManager requestLocation];
 
-  CLLocationCoordinate2D location;
-  location = CLLocationCoordinate2DMake(47.6062, -122.3321);
-  [self setMapLocation: location];
+  CLLocationCoordinate2D seattle;
+  seattle = CLLocationCoordinate2DMake(47.6062, -122.3321);
+  [self setMapLocation: seattle];
   
   // PFObject *testObj = [[PFObject alloc] initWithClassName:@"TestObject"];
   // testObj[@"name"] = @"Jake";
@@ -56,7 +56,7 @@
   span = MKCoordinateSpanMake(0.05, 0.05);
   region = MKCoordinateRegionMake(location, span);
   
-  [self.mapView setRegion:region];
+  [self.mapView setRegion:region animated:YES];
 }
 
 - (IBAction)locationSelectonDidChange:(UISegmentedControl *)sender {
@@ -75,18 +75,18 @@
     location = CLLocationCoordinate2DMake(45.4997210, -73.5511130);
     [self setMapLocation: location];
   } else {
-    NSLog(@"what the hell is this");
+    NSLog(@"Unrecognized selection.");
   }
 }
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray<CLLocation *> *)locations {
-  NSLog(@"updated");
+  NSLog(@"Successfully updated the user's location.");
 }
 
 - (void) locationManager:(CLLocationManager *)manager
         didFailWithError:(NSError *)error {
-  NSLog(@"failed");
+  NSLog(@"Failed to update the user's location.");
 }
 
 @end
