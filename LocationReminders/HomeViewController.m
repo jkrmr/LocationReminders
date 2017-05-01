@@ -9,6 +9,8 @@
 #import "HomeViewController.h"
 
 @interface HomeViewController ()
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *locationSelector;
 @end
 
 @implementation HomeViewController
