@@ -10,12 +10,11 @@
 @import CoreLocation;
 @import MapKit;
 
-@interface LocationController : NSObject
-@property (weak, nonatomic) id delegate;
-
-+ (instancetype) shared;
-@end
-
 @protocol LocationControllerDelegate <NSObject>
 - (void) locationControllerUpdatedLocation:(CLLocation *) location;
+@end
+
+@interface LocationController : NSObject
+@property (weak, nonatomic) id delegate;
++ (instancetype) shared;
 @end

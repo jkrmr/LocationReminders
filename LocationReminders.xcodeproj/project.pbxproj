@@ -158,8 +158,8 @@
 		1BAA28AA1EB7980400FBA04F /* LocationReminders */ = {
 			isa = PBXGroup;
 			children = (
-				1BCA57CC1EB902D6002B8CD1 /* Controllers */,
 				1B42585A1EB7BC5C007B84D0 /* Models */,
+				1BCA57CC1EB902D6002B8CD1 /* Controllers */,
 				1BAA28B41EB7980400FBA04F /* Main.storyboard */,
 				1BAA28BA1EB7980400FBA04F /* Assets.xcassets */,
 				1BAA28BC1EB7980400FBA04F /* LaunchScreen.storyboard */,
