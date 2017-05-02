@@ -20,12 +20,30 @@
   [super viewDidLoad];
   self.mapView.showsUserLocation = YES;
 
+  UILongPressGestureRecognizer *longPress;
+  longPress = [[UILongPressGestureRecognizer alloc]
+               initWithTarget:self action:@selector(mapWasPressed:)];
+  longPress.minimumPressDuration = 1.0;
+  [self.mapView addGestureRecognizer:longPress];
+
   LocationController.shared.delegate = self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  [self displaySelectedMap];
+- (void) mapWasPressed:(UILongPressGestureRecognizer*)gesture {
+  if (gesture.state == UIGestureRecognizerStateEnded) {
+    CLLocationCoordinate2D coord;
+    CGPoint point;
+    MKPointAnnotation *pinLocation;
+
+    point = [gesture locationInView:self.mapView];
+    coord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
+    pinLocation = [[MKPointAnnotation alloc] init];
+    pinLocation.coordinate = coord;
+    pinLocation.title = @"Jake's Steak House";
+    pinLocation.subtitle = @"where the magic happens";
+    
+    [self.mapView addAnnotation:pinLocation];
+  }
 }
 
 - (void)performTestQuery {
