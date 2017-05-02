@@ -144,18 +144,31 @@
   annotationView.canShowCallout = YES;
   annotationView.animatesDrop = YES;
 
-  // "(i)" button
   rightCalloutAccessory = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-  [rightCalloutAccessory addTarget:self
-                            action:@selector(infoButtonWasTapped:)
-                  forControlEvents:UIControlEventTouchUpInside];
-  
   annotationView.rightCalloutAccessoryView = rightCalloutAccessory;
-  
+
   return annotationView;
 }
 
-- (void) infoButtonWasTapped:(UIButton*)sender {
-  [self performSegueWithIdentifier:@"AddReminderViewController" sender:sender];
+- (void) mapView:(MKMapView *)mapView
+  annotationView:(MKAnnotationView *)view
+calloutAccessoryControlTapped:(UIControl *)control {
+  [self performSegueWithIdentifier:@"AddReminderViewController" sender:view];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  [super prepareForSegue:segue sender:sender];
+
+  if ([[segue identifier] isEqualToString:@"AddReminderViewController"] &&
+      [sender isKindOfClass:[MKAnnotationView class]]) {
+    AddReminderViewController *addReminderVC;
+    MKAnnotationView *annotationView = (MKAnnotationView*) sender;
+    addReminderVC = (AddReminderViewController*) segue.destinationViewController;
+    addReminderVC.coordinate = annotationView.annotation.coordinate;
+    addReminderVC.annotationTitle = annotationView.annotation.title;
+    addReminderVC.annotationSubtitle = annotationView.annotation.subtitle;
+    addReminderVC.title = annotationView.annotation.title;
+  }
+}
+
 @end

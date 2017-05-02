@@ -7,7 +7,10 @@
 //
 
 @import UIKit;
+@import CoreLocation;
 
 @interface AddReminderViewController : UIViewController
-
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (strong, nonatomic) NSString* annotationTitle;
+@property (strong, nonatomic) NSString* annotationSubtitle;
 @end

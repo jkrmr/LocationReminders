@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,12 +74,41 @@
                     <view key="view" contentMode="scaleToFill" id="Vvw-w2-41P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6rs-y8-b9g">
+                                <rect key="frame" x="16" y="114" width="343" height="45"/>
+                                <accessibility key="accessibilityConfiguration" label="Name"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="8Qo-Qz-XNa"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Radius" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DhG-AY-dId">
+                                <rect key="frame" x="16" y="167" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="5TV-S8-v7V"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6rs-y8-b9g" firstAttribute="top" secondItem="cI2-8A-uqC" secondAttribute="bottom" constant="50" id="7et-lu-w3A"/>
+                            <constraint firstItem="DhG-AY-dId" firstAttribute="top" secondItem="6rs-y8-b9g" secondAttribute="bottom" constant="8" id="OJQ-2x-57f"/>
+                            <constraint firstItem="DhG-AY-dId" firstAttribute="leading" secondItem="Vvw-w2-41P" secondAttribute="leadingMargin" id="Su8-DC-e4Y"/>
+                            <constraint firstItem="6rs-y8-b9g" firstAttribute="leading" secondItem="Vvw-w2-41P" secondAttribute="leadingMargin" id="WxD-EN-yrj"/>
+                            <constraint firstItem="DhG-AY-dId" firstAttribute="trailing" secondItem="Vvw-w2-41P" secondAttribute="trailingMargin" id="jUX-UG-i91"/>
+                            <constraint firstItem="6rs-y8-b9g" firstAttribute="trailing" secondItem="Vvw-w2-41P" secondAttribute="trailingMargin" id="ssI-2P-v0T"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPn-tQ-A6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="869"/>
+            <point key="canvasLocation" x="1480.8" y="868.51574212893559"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hif-6f-N7f">
