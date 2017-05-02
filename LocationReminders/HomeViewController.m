@@ -43,7 +43,7 @@
     pinLocation.coordinate = coord;
     pinLocation.title = @"Jake's Steak House";
     pinLocation.subtitle = @"where the magic happens";
-    
+
     [self.mapView addAnnotation:pinLocation];
   }
 }
@@ -143,11 +143,27 @@
 
   annotationView.canShowCallout = YES;
   annotationView.animatesDrop = YES;
+  annotationView.pinTintColor = [self randomPinColor];
 
   rightCalloutAccessory = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
   annotationView.rightCalloutAccessoryView = rightCalloutAccessory;
 
   return annotationView;
+}
+
+- (UIColor *) randomPinColor {
+  int rand = (int)arc4random_uniform(4);
+  
+  switch (rand) {
+    case 0:
+      return [MKPinAnnotationView redPinColor];
+    case 1:
+      return [MKPinAnnotationView purplePinColor];
+    case 2:
+      return [MKPinAnnotationView greenPinColor];
+    default:
+      return [UIColor colorWithRed:0.94 green:0.94 blue:0.04 alpha:1.0];
+  }
 }
 
 - (void) mapView:(MKMapView *)mapView
