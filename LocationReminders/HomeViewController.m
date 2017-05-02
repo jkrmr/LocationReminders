@@ -8,10 +8,10 @@
 
 #import "HomeViewController.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <LocationControllerDelegate>
 @property(weak, nonatomic) IBOutlet MKMapView *mapView;
 @property(weak, nonatomic) IBOutlet UISegmentedControl *locationSelector;
-@property(strong, nonatomic) CLLocationManager *locationManager;
+@property(strong, nonatomic) LocationController *locationController;
 @end
 
 @implementation HomeViewController
@@ -19,7 +19,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.mapView.showsUserLocation = YES;
-  [self configureLocationManager];
+
+  LocationController.shared.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -56,15 +57,6 @@
   [self displaySelectedMap];
 }
 
-#pragma mark - CLLocationManager setup
-
-- (void)configureLocationManager {
-  self.locationManager = [[CLLocationManager alloc] init];
-  self.locationManager.delegate = self;
-  [self.locationManager requestWhenInUseAuthorization];
-  [self.locationManager requestLocation];
-}
-
 #pragma mark - Map display logic
 
 - (void)displaySelectedMap {
@@ -93,22 +85,18 @@
   MKCoordinateRegion region;
   MKCoordinateSpan span;
 
-  span = MKCoordinateSpanMake(0.05, 0.05);
+  span = MKCoordinateSpanMake(0.03, 0.03);
   region = MKCoordinateRegionMake(location, span);
 
   [self.mapView setRegion:region animated:YES];
 }
 
-#pragma mark - CLLocationManager delegate methods
+#pragma mark - LocationController delegate methods
 
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray<CLLocation *> *)locations {
-  NSLog(@"Successfully updated the user's location.");
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error {
-  NSLog(@"Failed to update the user's location.");
+- (void) locationControllerUpdatedLocation:(CLLocation *)location {
+  MKCoordinateRegion region;
+  region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500);
+  [self.mapView setRegion:region animated:YES];
 }
 
 @end
