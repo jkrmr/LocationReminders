@@ -6,9 +6,9 @@
 //  Copyright © 2017 Jake Romer. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
-#import <MapKit/MapKit.h>
+@import Foundation;
+@import CoreLocation;
+@import MapKit;
 
 @interface LocationController : NSObject
 @property (weak, nonatomic) id delegate;
