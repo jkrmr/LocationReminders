@@ -24,14 +24,15 @@
 
   UILongPressGestureRecognizer *longPress;
   longPress = [[UILongPressGestureRecognizer alloc]
-               initWithTarget:self action:@selector(mapWasPressed:)];
+      initWithTarget:self
+              action:@selector(mapWasPressed:)];
   longPress.minimumPressDuration = 1.0;
   [self.mapView addGestureRecognizer:longPress];
 
   LocationController.shared.delegate = self;
 }
 
-- (void) mapWasPressed:(UILongPressGestureRecognizer*)gesture {
+- (void)mapWasPressed:(UILongPressGestureRecognizer *)gesture {
   if (gesture.state == UIGestureRecognizerStateEnded) {
     CLLocationCoordinate2D coord;
     CGPoint point;
@@ -113,62 +114,63 @@
 
 #pragma mark - LocationController delegate methods
 
-- (void) locationControllerUpdatedLocation:(CLLocation *)location {
+- (void)locationControllerUpdatedLocation:(CLLocation *)location {
   MKCoordinateRegion region;
   region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500);
   [self.mapView setRegion:region animated:YES];
 }
 
-
 #pragma mark - MapView delegate methods
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+- (MKAnnotationView *)mapView:(MKMapView *)mapView
+            viewForAnnotation:(id<MKAnnotation>)annotation {
   MKPinAnnotationView *annotationView;
   UIButton *rightCalloutAccessory;
-  
+
   if ([annotation isKindOfClass:[MKUserLocation class]]) {
     return nil;
   }
 
-  annotationView = (MKPinAnnotationView*)
-    [mapView dequeueReusableAnnotationViewWithIdentifier:@"annotation"];
+  annotationView = (MKPinAnnotationView *)[mapView
+      dequeueReusableAnnotationViewWithIdentifier:@"annotation"];
 
   annotationView.annotation = annotation;
 
   if (!annotationView) {
-    annotationView = [[MKPinAnnotationView alloc]
-                      initWithAnnotation:annotation
-                      reuseIdentifier:@"annotation"];
+    annotationView =
+        [[MKPinAnnotationView alloc] initWithAnnotation:annotation
+                                        reuseIdentifier:@"annotation"];
   }
 
   annotationView.canShowCallout = YES;
   annotationView.animatesDrop = YES;
   annotationView.pinTintColor = [self randomPinColor];
 
-  rightCalloutAccessory = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+  rightCalloutAccessory =
+      [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
   annotationView.rightCalloutAccessoryView = rightCalloutAccessory;
 
   return annotationView;
 }
 
-- (UIColor *) randomPinColor {
+- (UIColor *)randomPinColor {
   int rand = (int)arc4random_uniform(4);
-  
+
   switch (rand) {
-    case 0:
-      return [MKPinAnnotationView redPinColor];
-    case 1:
-      return [MKPinAnnotationView purplePinColor];
-    case 2:
-      return [MKPinAnnotationView greenPinColor];
-    default:
-      return [UIColor colorWithRed:0.94 green:0.94 blue:0.04 alpha:1.0];
+  case 0:
+    return [MKPinAnnotationView redPinColor];
+  case 1:
+    return [MKPinAnnotationView purplePinColor];
+  case 2:
+    return [MKPinAnnotationView greenPinColor];
+  default:
+    return [UIColor colorWithRed:0.94 green:0.94 blue:0.04 alpha:1.0];
   }
 }
 
-- (void) mapView:(MKMapView *)mapView
-  annotationView:(MKAnnotationView *)view
-calloutAccessoryControlTapped:(UIControl *)control {
+- (void)mapView:(MKMapView *)mapView
+                   annotationView:(MKAnnotationView *)view
+    calloutAccessoryControlTapped:(UIControl *)control {
   [self performSegueWithIdentifier:@"AddReminderViewController" sender:view];
 }
 
@@ -178,8 +180,9 @@ calloutAccessoryControlTapped:(UIControl *)control {
   if ([[segue identifier] isEqualToString:@"AddReminderViewController"] &&
       [sender isKindOfClass:[MKAnnotationView class]]) {
     AddReminderViewController *addReminderVC;
-    MKAnnotationView *annotationView = (MKAnnotationView*) sender;
-    addReminderVC = (AddReminderViewController*) segue.destinationViewController;
+    MKAnnotationView *annotationView = (MKAnnotationView *)sender;
+    addReminderVC =
+        (AddReminderViewController *)segue.destinationViewController;
     addReminderVC.coordinate = annotationView.annotation.coordinate;
     addReminderVC.annotationTitle = annotationView.annotation.title;
     addReminderVC.annotationSubtitle = annotationView.annotation.subtitle;

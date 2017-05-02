@@ -9,8 +9,8 @@
 #import "AddReminderViewController.h"
 
 @interface AddReminderViewController () <UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *reminderName;
-@property (weak, nonatomic) IBOutlet UITextField *reminderRadius;
+@property(weak, nonatomic) IBOutlet UITextField *reminderName;
+@property(weak, nonatomic) IBOutlet UITextField *reminderRadius;
 @end
 
 @implementation AddReminderViewController
@@ -33,7 +33,7 @@
   } else {
     [textField resignFirstResponder];
   }
-  
+
   return NO;
 }
 

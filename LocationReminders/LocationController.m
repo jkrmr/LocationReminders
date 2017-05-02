@@ -9,13 +9,13 @@
 #import "LocationController.h"
 
 @interface LocationController () <CLLocationManagerDelegate>
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property (strong, nonatomic) CLLocation *location;
+@property(strong, nonatomic) CLLocationManager *locationManager;
+@property(strong, nonatomic) CLLocation *location;
 @end
 
 @implementation LocationController
 
-+ (instancetype) shared {
++ (instancetype)shared {
   static LocationController *_shared = nil;
   static dispatch_once_t onceToken;
 
@@ -26,7 +26,7 @@
   return _shared;
 }
 
-- (instancetype) init {
+- (instancetype)init {
   self = [super init];
   if (self) {
     self.locationManager = [[CLLocationManager alloc] init];
