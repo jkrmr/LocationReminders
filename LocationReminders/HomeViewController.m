@@ -7,8 +7,9 @@
 //
 
 #import "HomeViewController.h"
+#import "AddReminderViewController.h"
 
-@interface HomeViewController () <LocationControllerDelegate>
+@interface HomeViewController () <LocationControllerDelegate, MKMapViewDelegate>
 @property(weak, nonatomic) IBOutlet MKMapView *mapView;
 @property(weak, nonatomic) IBOutlet UISegmentedControl *locationSelector;
 @property(strong, nonatomic) LocationController *locationController;
@@ -19,6 +20,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.mapView.showsUserLocation = YES;
+  self.mapView.delegate = self;
 
   UILongPressGestureRecognizer *longPress;
   longPress = [[UILongPressGestureRecognizer alloc]
@@ -117,4 +119,43 @@
   [self.mapView setRegion:region animated:YES];
 }
 
+
+#pragma mark - MapView delegate methods
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+  MKPinAnnotationView *annotationView;
+  UIButton *rightCalloutAccessory;
+  
+  if ([annotation isKindOfClass:[MKUserLocation class]]) {
+    return nil;
+  }
+
+  annotationView = (MKPinAnnotationView*)
+    [mapView dequeueReusableAnnotationViewWithIdentifier:@"annotation"];
+
+  annotationView.annotation = annotation;
+
+  if (!annotationView) {
+    annotationView = [[MKPinAnnotationView alloc]
+                      initWithAnnotation:annotation
+                      reuseIdentifier:@"annotation"];
+  }
+
+  annotationView.canShowCallout = YES;
+  annotationView.animatesDrop = YES;
+
+  // "(i)" button
+  rightCalloutAccessory = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+  [rightCalloutAccessory addTarget:self
+                            action:@selector(infoButtonWasTapped:)
+                  forControlEvents:UIControlEventTouchUpInside];
+  
+  annotationView.rightCalloutAccessoryView = rightCalloutAccessory;
+  
+  return annotationView;
+}
+
+- (void) infoButtonWasTapped:(UIButton*)sender {
+  [self performSegueWithIdentifier:@"AddReminderViewController" sender:sender];
+}
 @end
