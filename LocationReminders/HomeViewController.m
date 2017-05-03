@@ -46,12 +46,12 @@
   }];
 
   [NSNotificationCenter.defaultCenter addObserver:self
-                                         selector:@selector(reminderSaved)
-                                             name:@"reminderSaved"
+                                         selector:@selector(reminderWasSaved)
+                                             name:@"ReminderWasSaved"
                                            object:nil];
 }
 
-- (void) reminderSaved {
+- (void) reminderWasSaved {
   NSLog(@"hello beatufiul reminder");
 }
 
@@ -235,7 +235,7 @@
 
 - (void)dealloc {
   [NSNotificationCenter.defaultCenter removeObserver:self
-                                                name:@"reminderSaved"
+                                                name:@"ReminderWasSaved"
                                               object:nil];
 }
 
