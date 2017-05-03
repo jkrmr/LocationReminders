@@ -10,6 +10,7 @@
 @import UIKit;
 @import CoreLocation;
 @import Parse;
+@import ParseUI;
 #import "LocationController.h"
 
 @interface HomeViewController : UIViewController

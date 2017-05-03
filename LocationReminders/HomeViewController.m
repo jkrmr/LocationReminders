@@ -9,7 +9,10 @@
 #import "HomeViewController.h"
 #import "AddReminderViewController.h"
 
-@interface HomeViewController () <LocationControllerDelegate, MKMapViewDelegate>
+@interface HomeViewController () <LocationControllerDelegate,
+                                  MKMapViewDelegate,
+                                  PFLogInViewControllerDelegate,
+                                  PFSignUpViewControllerDelegate>
 @property(weak, nonatomic) IBOutlet MKMapView *mapView;
 @property(weak, nonatomic) IBOutlet UISegmentedControl *locationSelector;
 @property(strong, nonatomic) LocationController *locationController;
@@ -49,6 +52,18 @@
                                          selector:@selector(reminderWasSaved)
                                              name:@"ReminderWasSaved"
                                            object:nil];
+
+  if (![PFUser currentUser]) {
+    PFLogInViewController *loginVC = [[PFLogInViewController alloc] init];
+    loginVC.delegate = self;
+    loginVC.signUpController.delegate = self;
+
+    loginVC.fields = PFLogInFieldsLogInButton |
+                     PFLogInFieldsSignUpButton |
+                     PFLogInFieldsUsernameAndPassword;
+
+    [self presentViewController:loginVC animated:YES completion:nil];
+  }
 }
 
 - (void) reminderWasSaved {
@@ -237,6 +252,17 @@
   [NSNotificationCenter.defaultCenter removeObserver:self
                                                 name:@"ReminderWasSaved"
                                               object:nil];
+}
+
+- (void) signUpViewController:(PFSignUpViewController *)signUpController
+                didSignUpUser:(PFUser *)user {
+  [self dismissViewControllerAnimated:YES completion:nil];
+  
+}
+
+- (void)logInViewController:(PFLogInViewController *)logInController
+               didLogInUser:(PFUser *)user {
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
