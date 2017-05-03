@@ -6,8 +6,9 @@
 //  Copyright © 2017 Jake Romer. All rights reserved.
 //
 
-#import <CoreData/CoreData.h>
-#import <UIKit/UIKit.h>
+@import CoreData;
+@import UIKit;
+@import ParseUI;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

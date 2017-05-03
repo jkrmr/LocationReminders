@@ -28,6 +28,7 @@
 		1BCA57CF1EB902F4002B8CD1 /* AddReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCA57CE1EB902F4002B8CD1 /* AddReminderViewController.m */; };
 		1BD9AB021EB7D80F009F482B /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD9AB011EB7D80F009F482B /* Settings.m */; };
 		1BE3234B1EBA466D0082CE4A /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE3234A1EBA466D0082CE4A /* Reminder.m */; };
+		1BE3234F1EBA59D00082CE4A /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE3234E1EBA59D00082CE4A /* ParseUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,8 @@
 		1BD9AB011EB7D80F009F482B /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		1BE323491EBA466D0082CE4A /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
 		1BE3234A1EBA466D0082CE4A /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
+		1BE3234C1EBA59BF0082CE4A /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = ../../Downloads/ParseUI.framework; sourceTree = "<group>"; };
+		1BE3234E1EBA59D00082CE4A /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,7 @@
 			files = (
 				1BAA28E21EB7B51300FBA04F /* Bolts.framework in Frameworks */,
 				1BAA28DD1EB7AD4900FBA04F /* CoreLocation.framework in Frameworks */,
+				1BE3234F1EBA59D00082CE4A /* ParseUI.framework in Frameworks */,
 				1BAA28E41EB7B51300FBA04F /* Parse.framework in Frameworks */,
 				1BAA28DB1EB7AD4300FBA04F /* MapKit.framework in Frameworks */,
 			);
@@ -146,6 +150,7 @@
 				1BAA28D91EB7AD4300FBA04F /* Frameworks */,
 				1BAA28E81EB7B55B00FBA04F /* Bolts.framework.dSYM */,
 				1BAA28E91EB7B55B00FBA04F /* Parse.framework.dSYM */,
+				1BE3234E1EBA59D00082CE4A /* ParseUI.framework */,
 				1BAA28E01EB7B51300FBA04F /* Bolts.framework */,
 				1BAA28E11EB7B51300FBA04F /* Parse.framework */,
 			);
@@ -195,6 +200,7 @@
 		1BAA28D91EB7AD4300FBA04F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1BE3234C1EBA59BF0082CE4A /* ParseUI.framework */,
 				1BAA28DE1EB7B4C900FBA04F /* Parse-SDK-iOS-OSX */,
 				1BAA28DC1EB7AD4900FBA04F /* CoreLocation.framework */,
 				1BAA28DA1EB7AD4300FBA04F /* MapKit.framework */,
@@ -488,6 +494,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = LocationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -504,6 +511,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = LocationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
