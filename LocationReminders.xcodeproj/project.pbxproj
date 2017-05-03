@@ -27,6 +27,7 @@
 		1BCA57CB1EB8E8E9002B8CD1 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCA57CA1EB8E8E9002B8CD1 /* LocationController.m */; };
 		1BCA57CF1EB902F4002B8CD1 /* AddReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCA57CE1EB902F4002B8CD1 /* AddReminderViewController.m */; };
 		1BD9AB021EB7D80F009F482B /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD9AB011EB7D80F009F482B /* Settings.m */; };
+		1BE3234B1EBA466D0082CE4A /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE3234A1EBA466D0082CE4A /* Reminder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,8 @@
 		1BCA57CE1EB902F4002B8CD1 /* AddReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddReminderViewController.m; sourceTree = "<group>"; };
 		1BD9AB001EB7D80F009F482B /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		1BD9AB011EB7D80F009F482B /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		1BE323491EBA466D0082CE4A /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
+		1BE3234A1EBA466D0082CE4A /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,8 @@
 				1BD9AB011EB7D80F009F482B /* Settings.m */,
 				1BCA57C91EB8E8E9002B8CD1 /* LocationController.h */,
 				1BCA57CA1EB8E8E9002B8CD1 /* LocationController.m */,
+				1BE323491EBA466D0082CE4A /* Reminder.h */,
+				1BE3234A1EBA466D0082CE4A /* Reminder.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				1B42585C1EB7BC86007B84D0 /* ParseConfiguration.m in Sources */,
 				1BD9AB021EB7D80F009F482B /* Settings.m in Sources */,
 				1BAA28B01EB7980400FBA04F /* AppDelegate.m in Sources */,
+				1BE3234B1EBA466D0082CE4A /* Reminder.m in Sources */,
 				1BCA57CF1EB902F4002B8CD1 /* AddReminderViewController.m in Sources */,
 				1BAA28AD1EB7980400FBA04F /* main.m in Sources */,
 				1BCA57CB1EB8E8E9002B8CD1 /* LocationController.m in Sources */,

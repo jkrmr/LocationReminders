@@ -8,6 +8,8 @@
 
 @import UIKit;
 @import CoreLocation;
+@import Parse;
+#import "Reminder.h"
 
 @interface AddReminderViewController : UIViewController
 @property(nonatomic) CLLocationCoordinate2D coordinate;
