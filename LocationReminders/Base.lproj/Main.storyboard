@@ -63,7 +63,7 @@
             </objects>
             <point key="canvasLocation" x="750" y="869"/>
         </scene>
-        <!--Add Reminder View Controller-->
+        <!--Title-->
         <scene sceneID="nNU-EO-lIC">
             <objects>
                 <viewController id="VuU-6g-HKA" customClass="AddReminderViewController" sceneMemberID="viewController">
@@ -105,6 +105,15 @@
                             <constraint firstItem="6rs-y8-b9g" firstAttribute="trailing" secondItem="Vvw-w2-41P" secondAttribute="trailingMargin" id="ssI-2P-v0T"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="bK3-Z3-dAb">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="JJI-AI-R9X">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="VuU-6g-HKA" id="soE-wA-oAp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="reminderName" destination="6rs-y8-b9g" id="RJR-iR-bi9"/>
                         <outlet property="reminderRadius" destination="DhG-AY-dId" id="RP9-2c-Xmk"/>

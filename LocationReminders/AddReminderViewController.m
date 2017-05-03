@@ -21,6 +21,12 @@
   self.reminderRadius.delegate = self;
 }
 
+- (IBAction)doneButtonTapped:(UIBarButtonItem *)sender {
+
+  [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
   NSInteger nextTag;
   UITextField *nextField;
