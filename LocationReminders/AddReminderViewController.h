@@ -9,10 +9,14 @@
 @import UIKit;
 @import CoreLocation;
 @import Parse;
+@import MapKit;
 #import "Reminder.h"
+
+typedef void (^PFPostCompletion)(MKCircle *circle);
 
 @interface AddReminderViewController : UIViewController
 @property(nonatomic) CLLocationCoordinate2D coordinate;
 @property(strong, nonatomic) NSString *annotationTitle;
 @property(strong, nonatomic) NSString *annotationSubtitle;
+@property(strong, nonatomic) PFPostCompletion completion;
 @end

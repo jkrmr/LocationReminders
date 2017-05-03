@@ -197,6 +197,17 @@
   [self performSegueWithIdentifier:@"AddReminderViewController" sender:view];
 }
 
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView
+            rendererForOverlay:(id<MKOverlay>)overlay {
+  
+  MKCircleRenderer *renderer;
+  renderer = [[MKCircleRenderer alloc] initWithCircle:overlay];
+  renderer.strokeColor = [UIColor blueColor];
+  renderer.fillColor = [UIColor redColor];
+  
+  return renderer;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   [super prepareForSegue:segue sender:sender];
 
@@ -210,6 +221,14 @@
     addReminderVC.annotationTitle = annotationView.annotation.title;
     addReminderVC.annotationSubtitle = annotationView.annotation.subtitle;
     addReminderVC.title = annotationView.annotation.title;
+
+    __weak typeof(self) weakRef = self;
+    addReminderVC.completion = ^(MKCircle *circle) {
+      __strong typeof(weakRef) _self = weakRef;
+
+      [_self.mapView removeAnnotation:annotationView.annotation];
+      [_self.mapView addOverlay:circle];
+    };
   }
 }
 

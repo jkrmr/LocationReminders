@@ -46,6 +46,13 @@
     } else {
       NSLog(@"Whoops!");
     }
+
+    if (self.completion) {
+      CGFloat radius = 100;
+      MKCircle *circle = [MKCircle circleWithCenterCoordinate:self.coordinate
+                                                       radius:radius];
+      self.completion(circle);
+    }
   }];
 
   [self.navigationController popViewControllerAnimated:YES];
