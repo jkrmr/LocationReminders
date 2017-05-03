@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zvw-4B-B4g">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,14 +52,83 @@
                             <constraint firstItem="SoJ-Ay-JoH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.7" id="if1-Rt-eq6"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="gIc-p5-C6E"/>
                     <connections>
                         <outlet property="locationSelector" destination="9Eg-FV-4N4" id="DXO-Pu-p7z"/>
                         <outlet property="mapView" destination="SoJ-Ay-JoH" id="QPI-iI-8Ii"/>
+                        <segue destination="VuU-6g-HKA" kind="show" identifier="AddReminderViewController" id="fLR-h4-1Li"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="137.18140929535232"/>
+            <point key="canvasLocation" x="750" y="869"/>
+        </scene>
+        <!--Add Reminder View Controller-->
+        <scene sceneID="nNU-EO-lIC">
+            <objects>
+                <viewController id="VuU-6g-HKA" customClass="AddReminderViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cI2-8A-uqC"/>
+                        <viewControllerLayoutGuide type="bottom" id="5zS-EB-URx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vvw-w2-41P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6rs-y8-b9g">
+                                <rect key="frame" x="16" y="114" width="343" height="45"/>
+                                <accessibility key="accessibilityConfiguration" label="Name"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="8Qo-Qz-XNa"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Radius" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DhG-AY-dId">
+                                <rect key="frame" x="16" y="167" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="5TV-S8-v7V"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6rs-y8-b9g" firstAttribute="top" secondItem="cI2-8A-uqC" secondAttribute="bottom" constant="50" id="7et-lu-w3A"/>
+                            <constraint firstItem="DhG-AY-dId" firstAttribute="top" secondItem="6rs-y8-b9g" secondAttribute="bottom" constant="8" id="OJQ-2x-57f"/>
+                            <constraint firstItem="DhG-AY-dId" firstAttribute="leading" secondItem="Vvw-w2-41P" secondAttribute="leadingMargin" id="Su8-DC-e4Y"/>
+                            <constraint firstItem="6rs-y8-b9g" firstAttribute="leading" secondItem="Vvw-w2-41P" secondAttribute="leadingMargin" id="WxD-EN-yrj"/>
+                            <constraint firstItem="DhG-AY-dId" firstAttribute="trailing" secondItem="Vvw-w2-41P" secondAttribute="trailingMargin" id="jUX-UG-i91"/>
+                            <constraint firstItem="6rs-y8-b9g" firstAttribute="trailing" secondItem="Vvw-w2-41P" secondAttribute="trailingMargin" id="ssI-2P-v0T"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="reminderName" destination="6rs-y8-b9g" id="RJR-iR-bi9"/>
+                        <outlet property="reminderRadius" destination="DhG-AY-dId" id="RP9-2c-Xmk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dPn-tQ-A6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1480.8" y="868.51574212893559"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Hif-6f-N7f">
+            <objects>
+                <navigationController id="zvw-4B-B4g" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Uq-7c-zDc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ad2-MM-CmS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FVs-PL-K44" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6" y="869"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.45363246670000001" green="0.4584075453" blue="0.4584075453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

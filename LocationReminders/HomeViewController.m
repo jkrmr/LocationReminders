@@ -7,11 +7,12 @@
 //
 
 #import "HomeViewController.h"
+#import "AddReminderViewController.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <LocationControllerDelegate, MKMapViewDelegate>
 @property(weak, nonatomic) IBOutlet MKMapView *mapView;
 @property(weak, nonatomic) IBOutlet UISegmentedControl *locationSelector;
-@property(strong, nonatomic) CLLocationManager *locationManager;
+@property(strong, nonatomic) LocationController *locationController;
 @end
 
 @implementation HomeViewController
@@ -19,12 +20,33 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.mapView.showsUserLocation = YES;
-  [self configureLocationManager];
+  self.mapView.delegate = self;
+
+  UILongPressGestureRecognizer *longPress;
+  longPress = [[UILongPressGestureRecognizer alloc]
+      initWithTarget:self
+              action:@selector(mapWasPressed:)];
+  longPress.minimumPressDuration = 1.0;
+  [self.mapView addGestureRecognizer:longPress];
+
+  LocationController.shared.delegate = self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  [self displaySelectedMap];
+- (void)mapWasPressed:(UILongPressGestureRecognizer *)gesture {
+  if (gesture.state == UIGestureRecognizerStateEnded) {
+    CLLocationCoordinate2D coord;
+    CGPoint point;
+    MKPointAnnotation *pinLocation;
+
+    point = [gesture locationInView:self.mapView];
+    coord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
+    pinLocation = [[MKPointAnnotation alloc] init];
+    pinLocation.coordinate = coord;
+    pinLocation.title = @"Jake's Steak House";
+    pinLocation.subtitle = @"where the magic happens";
+
+    [self.mapView addAnnotation:pinLocation];
+  }
 }
 
 - (void)performTestQuery {
@@ -56,15 +78,6 @@
   [self displaySelectedMap];
 }
 
-#pragma mark - CLLocationManager setup
-
-- (void)configureLocationManager {
-  self.locationManager = [[CLLocationManager alloc] init];
-  self.locationManager.delegate = self;
-  [self.locationManager requestWhenInUseAuthorization];
-  [self.locationManager requestLocation];
-}
-
 #pragma mark - Map display logic
 
 - (void)displaySelectedMap {
@@ -93,22 +106,88 @@
   MKCoordinateRegion region;
   MKCoordinateSpan span;
 
-  span = MKCoordinateSpanMake(0.05, 0.05);
+  span = MKCoordinateSpanMake(0.03, 0.03);
   region = MKCoordinateRegionMake(location, span);
 
   [self.mapView setRegion:region animated:YES];
 }
 
-#pragma mark - CLLocationManager delegate methods
+#pragma mark - LocationController delegate methods
 
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray<CLLocation *> *)locations {
-  NSLog(@"Successfully updated the user's location.");
+- (void)locationControllerUpdatedLocation:(CLLocation *)location {
+  MKCoordinateRegion region;
+  region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500);
+  [self.mapView setRegion:region animated:YES];
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error {
-  NSLog(@"Failed to update the user's location.");
+#pragma mark - MapView delegate methods
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView
+            viewForAnnotation:(id<MKAnnotation>)annotation {
+  MKPinAnnotationView *annotationView;
+  UIButton *rightCalloutAccessory;
+
+  if ([annotation isKindOfClass:[MKUserLocation class]]) {
+    return nil;
+  }
+
+  annotationView = (MKPinAnnotationView *)[mapView
+      dequeueReusableAnnotationViewWithIdentifier:@"annotation"];
+
+  annotationView.annotation = annotation;
+
+  if (!annotationView) {
+    annotationView =
+        [[MKPinAnnotationView alloc] initWithAnnotation:annotation
+                                        reuseIdentifier:@"annotation"];
+  }
+
+  annotationView.canShowCallout = YES;
+  annotationView.animatesDrop = YES;
+  annotationView.pinTintColor = [self randomPinColor];
+
+  rightCalloutAccessory =
+      [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+  annotationView.rightCalloutAccessoryView = rightCalloutAccessory;
+
+  return annotationView;
+}
+
+- (UIColor *)randomPinColor {
+  int rand = (int)arc4random_uniform(4);
+
+  switch (rand) {
+  case 0:
+    return [MKPinAnnotationView redPinColor];
+  case 1:
+    return [MKPinAnnotationView purplePinColor];
+  case 2:
+    return [MKPinAnnotationView greenPinColor];
+  default:
+    return [UIColor colorWithRed:0.94 green:0.94 blue:0.04 alpha:1.0];
+  }
+}
+
+- (void)mapView:(MKMapView *)mapView
+                   annotationView:(MKAnnotationView *)view
+    calloutAccessoryControlTapped:(UIControl *)control {
+  [self performSegueWithIdentifier:@"AddReminderViewController" sender:view];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  [super prepareForSegue:segue sender:sender];
+
+  if ([[segue identifier] isEqualToString:@"AddReminderViewController"] &&
+      [sender isKindOfClass:[MKAnnotationView class]]) {
+    AddReminderViewController *addReminderVC;
+    MKAnnotationView *annotationView = (MKAnnotationView *)sender;
+    addReminderVC =
+        (AddReminderViewController *)segue.destinationViewController;
+    addReminderVC.coordinate = annotationView.annotation.coordinate;
+    addReminderVC.annotationTitle = annotationView.annotation.title;
+    addReminderVC.annotationSubtitle = annotationView.annotation.subtitle;
+    addReminderVC.title = annotationView.annotation.title;
+  }
 }
 
 @end
