@@ -30,6 +30,21 @@
   [self.mapView addGestureRecognizer:longPress];
 
   LocationController.shared.delegate = self;
+
+  PFQuery *query;
+  query = [PFQuery queryWithClassName:@"Reminder"];
+  [query setLimit:100];
+  [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+    if (error) {
+      NSLog(@"no es buenoooo");
+      NSString *errorString = [[error userInfo] objectForKey:@"error"];
+      NSLog(@"Error: %@", errorString);
+    } else {
+      NSLog(@"exito!");
+      NSLog(@"Retrieved: %@", objects);
+    }
+  }];
+  
 }
 
 - (void)mapWasPressed:(UILongPressGestureRecognizer *)gesture {
