@@ -233,4 +233,10 @@
   }
 }
 
+- (void)dealloc {
+  [NSNotificationCenter.defaultCenter removeObserver:self
+                                                name:@"reminderSaved"
+                                              object:nil];
+}
+
 @end
