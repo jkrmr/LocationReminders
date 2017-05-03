@@ -44,7 +44,15 @@
       NSLog(@"Retrieved: %@", objects);
     }
   }];
-  
+
+  [NSNotificationCenter.defaultCenter addObserver:self
+                                         selector:@selector(reminderSaved)
+                                             name:@"reminderSaved"
+                                           object:nil];
+}
+
+- (void) reminderSaved {
+  NSLog(@"hello beatufiul reminder");
 }
 
 - (void)mapWasPressed:(UILongPressGestureRecognizer *)gesture {

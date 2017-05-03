@@ -40,7 +40,9 @@
 
   [newReminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
     if (succeeded) {
-      NSLog(@"Whoops! It worked!"); 
+      NSLog(@"Whoops! It worked!");
+      [NSNotificationCenter.defaultCenter postNotificationName:@"reminderSaved"
+                                                        object:nil];
     } else {
       NSLog(@"Whoops!");
     }
