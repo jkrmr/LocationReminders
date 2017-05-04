@@ -14,11 +14,11 @@
 @dynamic location;
 @dynamic radius;
 
-+ (void) load {
++ (void)load {
   [self registerSubclass];
 }
 
-+ (NSString *) parseClassName {
++ (NSString *)parseClassName {
   return @"Reminder";
 }
 

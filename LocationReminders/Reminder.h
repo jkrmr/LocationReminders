@@ -9,7 +9,7 @@
 @import Foundation;
 @import Parse;
 
-@interface Reminder : PFObject<PFSubclassing>
+@interface Reminder : PFObject <PFSubclassing>
 
 @property(strong, nonatomic) NSString *name;
 @property(strong, nonatomic) PFGeoPoint *location;

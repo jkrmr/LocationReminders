@@ -9,8 +9,7 @@
 #import "HomeViewController.h"
 #import "AddReminderViewController.h"
 
-@interface HomeViewController () <LocationControllerDelegate,
-                                  MKMapViewDelegate,
+@interface HomeViewController () <LocationControllerDelegate, MKMapViewDelegate,
                                   PFLogInViewControllerDelegate,
                                   PFSignUpViewControllerDelegate>
 @property(weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -37,7 +36,8 @@
   PFQuery *query;
   query = [PFQuery queryWithClassName:@"Reminder"];
   [query setLimit:100];
-  [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+  [query findObjectsInBackgroundWithBlock:^(NSArray *_Nullable objects,
+                                            NSError *_Nullable error) {
     if (error) {
       NSLog(@"no es buenoooo");
       NSString *errorString = [[error userInfo] objectForKey:@"error"];
@@ -58,15 +58,14 @@
     loginVC.delegate = self;
     loginVC.signUpController.delegate = self;
 
-    loginVC.fields = PFLogInFieldsLogInButton |
-                     PFLogInFieldsSignUpButton |
+    loginVC.fields = PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton |
                      PFLogInFieldsUsernameAndPassword;
 
     [self presentViewController:loginVC animated:YES completion:nil];
   }
 }
 
-- (void) reminderWasSaved {
+- (void)reminderWasSaved {
   NSLog(@"hello beatufiul reminder");
 }
 
@@ -254,10 +253,9 @@
                                               object:nil];
 }
 
-- (void) signUpViewController:(PFSignUpViewController *)signUpController
-                didSignUpUser:(PFUser *)user {
+- (void)signUpViewController:(PFSignUpViewController *)signUpController
+               didSignUpUser:(PFUser *)user {
   [self dismissViewControllerAnimated:YES completion:nil];
-  
 }
 
 - (void)logInViewController:(PFLogInViewController *)logInController
