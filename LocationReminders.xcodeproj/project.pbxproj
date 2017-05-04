@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B42585C1EB7BC86007B84D0 /* ParseConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B42585B1EB7BC86007B84D0 /* ParseConfiguration.m */; };
+		1B6001561EBADC060068F879 /* MKPinAnnotationView+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6001551EBADC060068F879 /* MKPinAnnotationView+Color.m */; };
 		1BAA28AD1EB7980400FBA04F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28AC1EB7980400FBA04F /* main.m */; };
 		1BAA28B01EB7980400FBA04F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA28AF1EB7980400FBA04F /* AppDelegate.m */; };
 		1BAA28B61EB7980400FBA04F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BAA28B41EB7980400FBA04F /* Main.storyboard */; };
@@ -27,6 +28,8 @@
 		1BCA57CB1EB8E8E9002B8CD1 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCA57CA1EB8E8E9002B8CD1 /* LocationController.m */; };
 		1BCA57CF1EB902F4002B8CD1 /* AddReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCA57CE1EB902F4002B8CD1 /* AddReminderViewController.m */; };
 		1BD9AB021EB7D80F009F482B /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD9AB011EB7D80F009F482B /* Settings.m */; };
+		1BE3234B1EBA466D0082CE4A /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE3234A1EBA466D0082CE4A /* Reminder.m */; };
+		1BE3234F1EBA59D00082CE4A /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE3234E1EBA59D00082CE4A /* ParseUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,8 @@
 /* Begin PBXFileReference section */
 		1B42585B1EB7BC86007B84D0 /* ParseConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseConfiguration.m; sourceTree = "<group>"; };
 		1B42585D1EB7BCA5007B84D0 /* ParseConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseConfiguration.h; sourceTree = "<group>"; };
+		1B6001541EBADC060068F879 /* MKPinAnnotationView+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKPinAnnotationView+Color.h"; sourceTree = "<group>"; };
+		1B6001551EBADC060068F879 /* MKPinAnnotationView+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKPinAnnotationView+Color.m"; sourceTree = "<group>"; };
 		1BAA28A81EB7980400FBA04F /* LocationReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BAA28AC1EB7980400FBA04F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1BAA28AE1EB7980400FBA04F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -95,6 +100,10 @@
 		1BCA57CE1EB902F4002B8CD1 /* AddReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddReminderViewController.m; sourceTree = "<group>"; };
 		1BD9AB001EB7D80F009F482B /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		1BD9AB011EB7D80F009F482B /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		1BE323491EBA466D0082CE4A /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
+		1BE3234A1EBA466D0082CE4A /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
+		1BE3234C1EBA59BF0082CE4A /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = ../../Downloads/ParseUI.framework; sourceTree = "<group>"; };
+		1BE3234E1EBA59D00082CE4A /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +113,7 @@
 			files = (
 				1BAA28E21EB7B51300FBA04F /* Bolts.framework in Frameworks */,
 				1BAA28DD1EB7AD4900FBA04F /* CoreLocation.framework in Frameworks */,
+				1BE3234F1EBA59D00082CE4A /* ParseUI.framework in Frameworks */,
 				1BAA28E41EB7B51300FBA04F /* Parse.framework in Frameworks */,
 				1BAA28DB1EB7AD4300FBA04F /* MapKit.framework in Frameworks */,
 			);
@@ -128,8 +138,19 @@
 				1BD9AB011EB7D80F009F482B /* Settings.m */,
 				1BCA57C91EB8E8E9002B8CD1 /* LocationController.h */,
 				1BCA57CA1EB8E8E9002B8CD1 /* LocationController.m */,
+				1BE323491EBA466D0082CE4A /* Reminder.h */,
+				1BE3234A1EBA466D0082CE4A /* Reminder.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		1B6001531EBADBD40068F879 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1B6001541EBADC060068F879 /* MKPinAnnotationView+Color.h */,
+				1B6001551EBADC060068F879 /* MKPinAnnotationView+Color.m */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		1BAA289F1EB7980400FBA04F = {
@@ -141,6 +162,7 @@
 				1BAA28D91EB7AD4300FBA04F /* Frameworks */,
 				1BAA28E81EB7B55B00FBA04F /* Bolts.framework.dSYM */,
 				1BAA28E91EB7B55B00FBA04F /* Parse.framework.dSYM */,
+				1BE3234E1EBA59D00082CE4A /* ParseUI.framework */,
 				1BAA28E01EB7B51300FBA04F /* Bolts.framework */,
 				1BAA28E11EB7B51300FBA04F /* Parse.framework */,
 			);
@@ -160,6 +182,7 @@
 			children = (
 				1B42585A1EB7BC5C007B84D0 /* Models */,
 				1BCA57CC1EB902D6002B8CD1 /* Controllers */,
+				1B6001531EBADBD40068F879 /* Extensions */,
 				1BAA28B41EB7980400FBA04F /* Main.storyboard */,
 				1BAA28BA1EB7980400FBA04F /* Assets.xcassets */,
 				1BAA28BC1EB7980400FBA04F /* LaunchScreen.storyboard */,
@@ -190,6 +213,7 @@
 		1BAA28D91EB7AD4300FBA04F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1BE3234C1EBA59BF0082CE4A /* ParseUI.framework */,
 				1BAA28DE1EB7B4C900FBA04F /* Parse-SDK-iOS-OSX */,
 				1BAA28DC1EB7AD4900FBA04F /* CoreLocation.framework */,
 				1BAA28DA1EB7AD4300FBA04F /* MapKit.framework */,
@@ -339,10 +363,12 @@
 				1B42585C1EB7BC86007B84D0 /* ParseConfiguration.m in Sources */,
 				1BD9AB021EB7D80F009F482B /* Settings.m in Sources */,
 				1BAA28B01EB7980400FBA04F /* AppDelegate.m in Sources */,
+				1BE3234B1EBA466D0082CE4A /* Reminder.m in Sources */,
 				1BCA57CF1EB902F4002B8CD1 /* AddReminderViewController.m in Sources */,
 				1BAA28AD1EB7980400FBA04F /* main.m in Sources */,
 				1BCA57CB1EB8E8E9002B8CD1 /* LocationController.m in Sources */,
 				1BAA28D81EB79C3000FBA04F /* HomeViewController.m in Sources */,
+				1B6001561EBADC060068F879 /* MKPinAnnotationView+Color.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +508,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = LocationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -498,6 +525,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = LocationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

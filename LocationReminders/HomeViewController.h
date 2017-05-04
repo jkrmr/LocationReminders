@@ -10,7 +10,10 @@
 @import UIKit;
 @import CoreLocation;
 @import Parse;
+@import ParseUI;
+#import "AddReminderViewController.h"
 #import "LocationController.h"
+#import "MKPinAnnotationView+Color.h"
 
 @interface HomeViewController : UIViewController
 @end

@@ -7,9 +7,10 @@
 //
 
 #import "HomeViewController.h"
-#import "AddReminderViewController.h"
 
-@interface HomeViewController () <LocationControllerDelegate, MKMapViewDelegate>
+@interface HomeViewController () <LocationControllerDelegate, MKMapViewDelegate,
+                                  PFLogInViewControllerDelegate,
+                                  PFSignUpViewControllerDelegate>
 @property(weak, nonatomic) IBOutlet MKMapView *mapView;
 @property(weak, nonatomic) IBOutlet UISegmentedControl *locationSelector;
 @property(strong, nonatomic) LocationController *locationController;
@@ -30,6 +31,41 @@
   [self.mapView addGestureRecognizer:longPress];
 
   LocationController.shared.delegate = self;
+
+  PFQuery *query;
+  query = [PFQuery queryWithClassName:@"Reminder"];
+  [query setLimit:100];
+  [query findObjectsInBackgroundWithBlock:^(NSArray *_Nullable objects,
+                                            NSError *_Nullable error) {
+    if (error) {
+      NSLog(@"no es buenoooo");
+      NSString *errorString = [[error userInfo] objectForKey:@"error"];
+      NSLog(@"Error: %@", errorString);
+    } else {
+      NSLog(@"exito!");
+      NSLog(@"Retrieved: %@", objects);
+    }
+  }];
+
+  [NSNotificationCenter.defaultCenter addObserver:self
+                                         selector:@selector(reminderWasSaved)
+                                             name:@"ReminderWasSaved"
+                                           object:nil];
+
+  if (![PFUser currentUser]) {
+    PFLogInViewController *loginVC = [[PFLogInViewController alloc] init];
+    loginVC.delegate = self;
+    loginVC.signUpController.delegate = self;
+
+    loginVC.fields = PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton |
+                     PFLogInFieldsUsernameAndPassword;
+
+    [self presentViewController:loginVC animated:YES completion:nil];
+  }
+}
+
+- (void)reminderWasSaved {
+  NSLog(@"hello beatufiul reminder");
 }
 
 - (void)mapWasPressed:(UILongPressGestureRecognizer *)gesture {
@@ -144,7 +180,7 @@
 
   annotationView.canShowCallout = YES;
   annotationView.animatesDrop = YES;
-  annotationView.pinTintColor = [self randomPinColor];
+  annotationView.pinTintColor = [MKPinAnnotationView randomColor];
 
   rightCalloutAccessory =
       [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -153,25 +189,22 @@
   return annotationView;
 }
 
-- (UIColor *)randomPinColor {
-  int rand = (int)arc4random_uniform(4);
-
-  switch (rand) {
-  case 0:
-    return [MKPinAnnotationView redPinColor];
-  case 1:
-    return [MKPinAnnotationView purplePinColor];
-  case 2:
-    return [MKPinAnnotationView greenPinColor];
-  default:
-    return [UIColor colorWithRed:0.94 green:0.94 blue:0.04 alpha:1.0];
-  }
-}
-
 - (void)mapView:(MKMapView *)mapView
                    annotationView:(MKAnnotationView *)view
     calloutAccessoryControlTapped:(UIControl *)control {
   [self performSegueWithIdentifier:@"AddReminderViewController" sender:view];
+}
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView
+            rendererForOverlay:(id<MKOverlay>)overlay {
+
+  MKCircleRenderer *renderer;
+  renderer = [[MKCircleRenderer alloc] initWithCircle:overlay];
+  renderer.strokeColor = [UIColor blueColor];
+  renderer.fillColor = [UIColor redColor];
+  renderer.alpha = 0.25;
+
+  return renderer;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -187,7 +220,31 @@
     addReminderVC.annotationTitle = annotationView.annotation.title;
     addReminderVC.annotationSubtitle = annotationView.annotation.subtitle;
     addReminderVC.title = annotationView.annotation.title;
+
+    __weak typeof(self) weakRef = self;
+    addReminderVC.completion = ^(MKCircle *circle) {
+      __strong typeof(weakRef) _self = weakRef;
+
+      [_self.mapView removeAnnotation:annotationView.annotation];
+      [_self.mapView addOverlay:circle];
+    };
   }
+}
+
+- (void)dealloc {
+  [NSNotificationCenter.defaultCenter removeObserver:self
+                                                name:@"ReminderWasSaved"
+                                              object:nil];
+}
+
+- (void)signUpViewController:(PFSignUpViewController *)signUpController
+               didSignUpUser:(PFUser *)user {
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)logInViewController:(PFLogInViewController *)logInController
+               didLogInUser:(PFUser *)user {
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
