@@ -34,10 +34,14 @@
     self.locationManager.distanceFilter = 1;
     self.locationManager.distanceFilter = 100;
     self.locationManager.delegate = self;
-    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager requestAlwaysAuthorization];
     [self.locationManager startUpdatingLocation];
   }
   return self;
+}
+
+- (void)startMonitoringForRegion:(CLRegion *)region {
+  [self.locationManager startMonitoringForRegion:region];
 }
 
 #pragma mark - CLLocationManager delegate methods
@@ -51,6 +55,49 @@
 
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error {
-  NSLog(@"Failed to update the user's location.");
 }
+
+- (void)locationManager:(CLLocationManager *)manager
+         didEnterRegion:(CLRegion *)region {
+  NSLog(@"Did enter region: %@", region.identifier);
+
+  UNMutableNotificationContent *content;
+  content = [[UNMutableNotificationContent alloc] init];
+  content.title = [NSString stringWithFormat:@"%@", region.identifier];
+  content.body = @"You've entered a monitored region.";
+  content.sound = [UNNotificationSound defaultSound];
+
+  // Deliver the notification in five seconds.
+  UNTimeIntervalNotificationTrigger *trigger;
+  trigger =
+      [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
+  UNNotificationRequest *request;
+  request =
+      [UNNotificationRequest requestWithIdentifier:@"UserEnteredMonitoredRegion"
+                                           content:content
+                                           trigger:trigger];
+  // Schedule the notification.
+  UNUserNotificationCenter *center;
+  center = [UNUserNotificationCenter currentNotificationCenter];
+  [center removeAllPendingNotificationRequests];
+  [center addNotificationRequest:request
+           withCompletionHandler:^(NSError *_Nullable error) {
+             if (error) {
+               NSLog(@"Request Error: %@", error.localizedDescription);
+             }
+           }];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+          didExitRegion:(CLRegion *)region {
+}
+
+- (void)locationManager:(CLLocationManager *)manager didVisit:(CLVisit *)visit {
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+    didStartMonitoringForRegion:(CLRegion *)region {
+  [manager requestStateForRegion:region];
+}
+
 @end

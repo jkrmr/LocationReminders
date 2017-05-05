@@ -9,6 +9,7 @@
 @import Foundation;
 @import CoreLocation;
 @import MapKit;
+@import UserNotifications;
 
 @protocol LocationControllerDelegate <NSObject>
 - (void)locationControllerUpdatedLocation:(CLLocation *)location;
@@ -17,4 +18,5 @@
 @interface LocationController : NSObject
 @property(weak, nonatomic) id delegate;
 + (instancetype)shared;
+- (void)startMonitoringForRegion:(CLRegion *)region;
 @end

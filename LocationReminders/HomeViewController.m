@@ -38,12 +38,10 @@
   [query findObjectsInBackgroundWithBlock:^(NSArray *_Nullable objects,
                                             NSError *_Nullable error) {
     if (error) {
-      NSLog(@"no es buenoooo");
       NSString *errorString = [[error userInfo] objectForKey:@"error"];
       NSLog(@"Error: %@", errorString);
     } else {
-      NSLog(@"exito!");
-      NSLog(@"Retrieved: %@", objects);
+      [self displayItemsAsOverlays:objects];
     }
   }];
 
@@ -51,6 +49,12 @@
                                          selector:@selector(reminderWasSaved)
                                              name:@"ReminderWasSaved"
                                            object:nil];
+
+  [NSNotificationCenter.defaultCenter
+      addObserver:self
+         selector:@selector(userEnteredMonitoredRegion)
+             name:@"UserEnteredMonitoredRegion"
+           object:nil];
 
   if (![PFUser currentUser]) {
     PFLogInViewController *loginVC = [[PFLogInViewController alloc] init];
@@ -68,6 +72,10 @@
   NSLog(@"hello beatufiul reminder");
 }
 
+- (void)userEnteredMonitoredRegion {
+  NSLog(@"entered a monitored region");
+}
+
 - (void)mapWasPressed:(UILongPressGestureRecognizer *)gesture {
   if (gesture.state == UIGestureRecognizerStateEnded) {
     CLLocationCoordinate2D coord;
@@ -78,34 +86,10 @@
     coord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
     pinLocation = [[MKPointAnnotation alloc] init];
     pinLocation.coordinate = coord;
-    pinLocation.title = @"Jake's Steak House";
-    pinLocation.subtitle = @"where the magic happens";
+    pinLocation.title = @"New location";
 
     [self.mapView addAnnotation:pinLocation];
   }
-}
-
-- (void)performTestQuery {
-  PFObject *testObj = [[PFObject alloc] initWithClassName:@"TestObject"];
-  testObj[@"name"] = @"Jake";
-  [testObj
-      saveInBackgroundWithBlock:^(BOOL succeeded, NSError *_Nullable error) {
-        if (succeeded) {
-          NSLog(@"good!");
-        } else {
-          NSLog(@"no good!");
-        }
-      }];
-
-  PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
-  [query findObjectsInBackgroundWithBlock:^(NSArray *_Nullable objects,
-                                            NSError *_Nullable error) {
-    if (error) {
-      NSLog(@"Error: %@", error.localizedDescription);
-    } else {
-      NSLog(@"Query results: %@", objects);
-    }
-  }];
 }
 
 #pragma mark - IBActions
@@ -136,6 +120,25 @@
   }
 
   [self setMapLocation:location];
+}
+
+- (void)displayItemsAsOverlays:(NSArray *)reminders {
+  NSMutableArray *overlays = [NSMutableArray array];
+
+  for (Reminder *reminder in reminders) {
+    MKCircle *circle;
+    CLLocationCoordinate2D coord;
+    CLLocationDistance radius;
+
+    coord = CLLocationCoordinate2DMake(reminder.location.latitude,
+                                       reminder.location.longitude);
+    radius = [reminder.radius doubleValue];
+    circle = [MKCircle circleWithCenterCoordinate:coord radius:radius];
+
+    [overlays addObject:circle];
+  }
+
+  [self.mapView addOverlays:overlays];
 }
 
 - (void)setMapLocation:(CLLocationCoordinate2D)location {

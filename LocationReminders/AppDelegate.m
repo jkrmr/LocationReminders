@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ParseConfiguration.h"
+@import UserNotifications;
 
 @interface AppDelegate ()
 @end
@@ -16,8 +17,28 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [self registerForNotifications];
   [ParseConfiguration configure];
   return YES;
+}
+
+- (void)registerForNotifications {
+  UNAuthorizationOptions options;
+  options = UNAuthorizationOptionAlert | UNAuthorizationOptionBadge |
+            UNAuthorizationOptionSound;
+
+  UNUserNotificationCenter *center;
+  center = [UNUserNotificationCenter currentNotificationCenter];
+  [center requestAuthorizationWithOptions:options
+                        completionHandler:^(BOOL granted,
+                                            NSError *_Nullable error) {
+                          if (error) {
+                            NSLog(@"error: %@", error.localizedDescription);
+                          }
+                          if (granted) {
+                            NSLog(@"user permits notifications");
+                          }
+                        }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -34,6 +55,15 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
   [self saveContext];
+}
+
+#pragma mark - Notifications
+
+- (void)application:(UIApplication *)application
+    didReceiveRemoteNotification:(NSDictionary *)userInfo
+          fetchCompletionHandler:
+              (void (^)(UIBackgroundFetchResult))completionHandler {
+  NSLog(@"%@", userInfo);
 }
 
 #pragma mark - Core Data stack
