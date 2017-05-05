@@ -85,29 +85,6 @@
   }
 }
 
-- (void)performTestQuery {
-  PFObject *testObj = [[PFObject alloc] initWithClassName:@"TestObject"];
-  testObj[@"name"] = @"Jake";
-  [testObj
-      saveInBackgroundWithBlock:^(BOOL succeeded, NSError *_Nullable error) {
-        if (succeeded) {
-          NSLog(@"good!");
-        } else {
-          NSLog(@"no good!");
-        }
-      }];
-
-  PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
-  [query findObjectsInBackgroundWithBlock:^(NSArray *_Nullable objects,
-                                            NSError *_Nullable error) {
-    if (error) {
-      NSLog(@"Error: %@", error.localizedDescription);
-    } else {
-      NSLog(@"Query results: %@", objects);
-    }
-  }];
-}
-
 #pragma mark - IBActions
 
 - (IBAction)locationSelectonDidChange:(UISegmentedControl *)sender {
@@ -136,6 +113,10 @@
   }
 
   [self setMapLocation:location];
+}
+
+- (void) displayStoredItemsAsOverlays {
+  
 }
 
 - (void)setMapLocation:(CLLocationCoordinate2D)location {
