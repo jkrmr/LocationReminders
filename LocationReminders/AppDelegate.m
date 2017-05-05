@@ -22,24 +22,23 @@
   return YES;
 }
 
-- (void) registerForNotifications {
+- (void)registerForNotifications {
   UNAuthorizationOptions options;
-  options = UNAuthorizationOptionAlert |
-            UNAuthorizationOptionBadge |
+  options = UNAuthorizationOptionAlert | UNAuthorizationOptionBadge |
             UNAuthorizationOptionSound;
 
   UNUserNotificationCenter *center;
   center = [UNUserNotificationCenter currentNotificationCenter];
   [center requestAuthorizationWithOptions:options
-                        completionHandler:
-   ^(BOOL granted, NSError * _Nullable error) {
-     if (error) {
-       NSLog(@"error: %@", error.localizedDescription);
-     }
-     if (granted) {
-       NSLog(@"user permits notifications");
-     }
-   }];
+                        completionHandler:^(BOOL granted,
+                                            NSError *_Nullable error) {
+                          if (error) {
+                            NSLog(@"error: %@", error.localizedDescription);
+                          }
+                          if (granted) {
+                            NSLog(@"user permits notifications");
+                          }
+                        }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -61,8 +60,9 @@
 #pragma mark - Notifications
 
 - (void)application:(UIApplication *)application
-didReceiveRemoteNotification:(NSDictionary *)userInfo
-fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    didReceiveRemoteNotification:(NSDictionary *)userInfo
+          fetchCompletionHandler:
+              (void (^)(UIBackgroundFetchResult))completionHandler {
   NSLog(@"%@", userInfo);
 }
 

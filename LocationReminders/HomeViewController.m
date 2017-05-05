@@ -49,11 +49,12 @@
                                          selector:@selector(reminderWasSaved)
                                              name:@"ReminderWasSaved"
                                            object:nil];
-  
-  [NSNotificationCenter.defaultCenter addObserver:self
-                                         selector:@selector(userEnteredMonitoredRegion)
-                                             name:@"UserEnteredMonitoredRegion"
-                                           object:nil];
+
+  [NSNotificationCenter.defaultCenter
+      addObserver:self
+         selector:@selector(userEnteredMonitoredRegion)
+             name:@"UserEnteredMonitoredRegion"
+           object:nil];
 
   if (![PFUser currentUser]) {
     PFLogInViewController *loginVC = [[PFLogInViewController alloc] init];
@@ -71,7 +72,7 @@
   NSLog(@"hello beatufiul reminder");
 }
 
-- (void) userEnteredMonitoredRegion {
+- (void)userEnteredMonitoredRegion {
   NSLog(@"entered a monitored region");
 }
 

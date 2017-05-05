@@ -40,7 +40,7 @@
   return self;
 }
 
-- (void) startMonitoringForRegion:(CLRegion *)region {
+- (void)startMonitoringForRegion:(CLRegion *)region {
   [self.locationManager startMonitoringForRegion:region];
 }
 
@@ -63,35 +63,41 @@
 
   UNMutableNotificationContent *content;
   content = [[UNMutableNotificationContent alloc] init];
-  content.title = @"you're in the zone!";
-  content.body = @"you've entered a monitored region.";
+  content.title = [NSString stringWithFormat:@"%@", region.identifier];
+  content.body = @"You've entered a monitored region.";
   content.sound = [UNNotificationSound defaultSound];
 
   // Deliver the notification in five seconds.
-  UNTimeIntervalNotificationTrigger* trigger;
-  trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1
-                                                               repeats:NO];
-  UNNotificationRequest* request;
-  request = [UNNotificationRequest requestWithIdentifier:@"UserEnteredMonitoredRegion"
-                                                 content:content
-                                                 trigger:trigger];
+  UNTimeIntervalNotificationTrigger *trigger;
+  trigger =
+      [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
+  UNNotificationRequest *request;
+  request =
+      [UNNotificationRequest requestWithIdentifier:@"UserEnteredMonitoredRegion"
+                                           content:content
+                                           trigger:trigger];
   // Schedule the notification.
-  UNUserNotificationCenter* center;
+  UNUserNotificationCenter *center;
   center = [UNUserNotificationCenter currentNotificationCenter];
-  [center addNotificationRequest:request withCompletionHandler:nil];
+  [center removeAllPendingNotificationRequests];
+  [center addNotificationRequest:request
+           withCompletionHandler:^(NSError *_Nullable error) {
+             if (error) {
+               NSLog(@"Request Error: %@", error.localizedDescription);
+             }
+           }];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
           didExitRegion:(CLRegion *)region {
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-               didVisit:(CLVisit *)visit {
+- (void)locationManager:(CLLocationManager *)manager didVisit:(CLVisit *)visit {
 }
 
 - (void)locationManager:(CLLocationManager *)manager
-didStartMonitoringForRegion:(CLRegion *)region {
-  [manager requestStateForRegion: region];
+    didStartMonitoringForRegion:(CLRegion *)region {
+  [manager requestStateForRegion:region];
 }
 
 @end

@@ -44,30 +44,31 @@
       NSLog(@"Whoops!");
       return;
     }
-    
+
     NSLog(@"Whoops! It worked!");
-    
-    [NSNotificationCenter.defaultCenter
-        postNotificationName:@"ReminderWasSaved"
-                      object:nil];
-    
+
+    [NSNotificationCenter.defaultCenter postNotificationName:@"ReminderWasSaved"
+                                                      object:nil];
+
     if (self.completion) {
       MKCircle *circle;
       circle = [MKCircle circleWithCenterCoordinate:self.coordinate
                                              radius:[rRadius doubleValue]];
 
-      if ([CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]]) {
+      if ([CLLocationManager
+              isMonitoringAvailableForClass:[CLCircularRegion class]]) {
         CLCircularRegion *region;
-        region = [[CLCircularRegion alloc] initWithCenter:self.coordinate
-                                                   radius:[rRadius doubleValue]
-                                               identifier:self.reminderName.text];
+        region =
+            [[CLCircularRegion alloc] initWithCenter:self.coordinate
+                                              radius:[rRadius doubleValue]
+                                          identifier:self.reminderName.text];
         region.notifyOnEntry = YES;
         region.notifyOnExit = YES;
         [LocationController.shared startMonitoringForRegion:region];
       } else {
         NSLog(@"Error: monitoring is not available for CLCircularRegion");
       }
-      
+
       self.completion(circle);
       [self.navigationController popViewControllerAnimated:YES];
     }

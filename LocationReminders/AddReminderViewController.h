@@ -10,8 +10,8 @@
 @import CoreLocation;
 @import Parse;
 @import MapKit;
-#import "Reminder.h"
 #import "LocationController.h"
+#import "Reminder.h"
 
 typedef void (^PFPostCompletion)(MKCircle *circle);
 
