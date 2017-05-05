@@ -7,8 +7,7 @@
 //
 
 #import "Settings.h"
-#import <Foundation/Foundation.h>
-#import <Parse/Parse.h>
+@import Parse;
 
 @interface ParseConfiguration : NSObject
 + (void)configure;

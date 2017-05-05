@@ -49,7 +49,7 @@
                                          selector:@selector(reminderWasSaved)
                                              name:@"ReminderWasSaved"
                                            object:nil];
-
+  
   if (![PFUser currentUser]) {
     PFLogInViewController *loginVC = [[PFLogInViewController alloc] init];
     loginVC.delegate = self;

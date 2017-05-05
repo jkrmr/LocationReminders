@@ -9,6 +9,7 @@
 @import Foundation;
 @import CoreLocation;
 @import MapKit;
+@import UserNotifications;
 
 @protocol LocationControllerDelegate <NSObject>
 - (void)locationControllerUpdatedLocation:(CLLocation *)location;
