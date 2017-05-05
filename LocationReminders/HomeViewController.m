@@ -38,12 +38,10 @@
   [query findObjectsInBackgroundWithBlock:^(NSArray *_Nullable objects,
                                             NSError *_Nullable error) {
     if (error) {
-      NSLog(@"no es buenoooo");
       NSString *errorString = [[error userInfo] objectForKey:@"error"];
       NSLog(@"Error: %@", errorString);
     } else {
-      NSLog(@"exito!");
-      NSLog(@"Retrieved: %@", objects);
+      [self displayItemsAsOverlays:objects];
     }
   }];
 
@@ -115,8 +113,23 @@
   [self setMapLocation:location];
 }
 
-- (void) displayStoredItemsAsOverlays {
-  
+- (void)displayItemsAsOverlays:(NSArray *)reminders {
+  NSMutableArray *overlays = [NSMutableArray array];
+
+  for (Reminder *reminder in reminders) {
+    MKCircle *circle;
+    CLLocationCoordinate2D coord;
+    CLLocationDistance radius;
+
+    coord = CLLocationCoordinate2DMake(reminder.location.latitude,
+                                       reminder.location.longitude);
+    radius = [reminder.radius doubleValue];
+    circle = [MKCircle circleWithCenterCoordinate:coord radius:radius];
+
+    [overlays addObject:circle];
+  }
+
+  [self.mapView addOverlays:overlays];
 }
 
 - (void)setMapLocation:(CLLocationCoordinate2D)location {
