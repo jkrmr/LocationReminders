@@ -40,6 +40,10 @@
   return self;
 }
 
+- (void) startMonitoringForRegion:(CLRegion *)region {
+  [self.locationManager startMonitoringForRegion:region];
+}
+
 #pragma mark - CLLocationManager delegate methods
 
 - (void)locationManager:(CLLocationManager *)manager
@@ -52,5 +56,25 @@
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error {
   NSLog(@"Failed to update the user's location.");
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+         didEnterRegion:(CLRegion *)region {
+  NSLog(@"Did enter region: %@", region.identifier);
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+          didExitRegion:(CLRegion *)region {
+  NSLog(@"Did exit region: %@", region.identifier);
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+               didVisit:(CLVisit *)visit {
+  NSLog(@"didVisit: %@", visit);
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+didStartMonitoringForRegion:(CLRegion *)region {
+  NSLog(@"began monitoring for region: %@", region);
 }
 @end

@@ -17,4 +17,5 @@
 @interface LocationController : NSObject
 @property(weak, nonatomic) id delegate;
 + (instancetype)shared;
+- (void) startMonitoringForRegion:(CLRegion *)region;
 @end

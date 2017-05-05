@@ -76,8 +76,7 @@
     coord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
     pinLocation = [[MKPointAnnotation alloc] init];
     pinLocation.coordinate = coord;
-    pinLocation.title = @"Jake's Steak House";
-    pinLocation.subtitle = @"where the magic happens";
+    pinLocation.title = @"New location";
 
     [self.mapView addAnnotation:pinLocation];
   }
