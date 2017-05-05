@@ -61,6 +61,8 @@
         region = [[CLCircularRegion alloc] initWithCenter:self.coordinate
                                                    radius:[rRadius doubleValue]
                                                identifier:self.reminderName.text];
+        region.notifyOnEntry = YES;
+        region.notifyOnExit = YES;
         [LocationController.shared startMonitoringForRegion:region];
       } else {
         NSLog(@"Error: monitoring is not available for CLCircularRegion");

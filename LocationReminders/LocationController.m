@@ -34,7 +34,7 @@
     self.locationManager.distanceFilter = 1;
     self.locationManager.distanceFilter = 100;
     self.locationManager.delegate = self;
-    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager requestAlwaysAuthorization];
     [self.locationManager startUpdatingLocation];
   }
   return self;
@@ -76,5 +76,12 @@
 - (void)locationManager:(CLLocationManager *)manager
 didStartMonitoringForRegion:(CLRegion *)region {
   NSLog(@"began monitoring for region: %@", region);
+  [manager requestStateForRegion: region];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+      didDetermineState:(CLRegionState)state
+              forRegion:(CLRegion *)region {
+  NSLog(@"determined state %lil for region %@", (long)state, region);
 }
 @end
