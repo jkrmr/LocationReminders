@@ -69,7 +69,7 @@
 
   // Deliver the notification in five seconds.
   UNTimeIntervalNotificationTrigger* trigger;
-  trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5
+  trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1
                                                                repeats:NO];
   UNNotificationRequest* request;
   request = [UNNotificationRequest requestWithIdentifier:@"UserEnteredMonitoredRegion"

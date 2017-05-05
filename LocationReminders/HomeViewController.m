@@ -50,6 +50,11 @@
                                              name:@"ReminderWasSaved"
                                            object:nil];
   
+  [NSNotificationCenter.defaultCenter addObserver:self
+                                         selector:@selector(userEnteredMonitoredRegion)
+                                             name:@"UserEnteredMonitoredRegion"
+                                           object:nil];
+
   if (![PFUser currentUser]) {
     PFLogInViewController *loginVC = [[PFLogInViewController alloc] init];
     loginVC.delegate = self;
@@ -64,6 +69,10 @@
 
 - (void)reminderWasSaved {
   NSLog(@"hello beatufiul reminder");
+}
+
+- (void) userEnteredMonitoredRegion {
+  NSLog(@"entered a monitored region");
 }
 
 - (void)mapWasPressed:(UILongPressGestureRecognizer *)gesture {
