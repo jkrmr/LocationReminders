@@ -14,10 +14,10 @@
 }
 
 + (NSString *)parseClientKey {
-  return @"hzr7yH2VNwnyLh74Jz3pT";
+  return @"lkjalkjdladaojklaldkjadoiad3423lkal";
 }
 
 + (NSString *)parseServerUrl {
-  return @"https://salty-chamber-67734.herokuapp.com/parse";
+  return @"https://jkrmr-parse-server.herokuapp.com/parse";
 }
 @end
